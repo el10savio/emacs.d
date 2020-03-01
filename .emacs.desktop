@@ -1,0 +1,59 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Sun Mar  1 14:09:33 2020
+;; Desktop file format version 208
+;; Emacs version 26.3
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (24155 29893 750652 0) (desktop . "208") "evincent@EVINCENT-C02ZG0" nil nil ((((minibuffer . t) (tty-type . "xterm-256color") (tty . "/dev/tty") (display-type . color) (background-mode . dark) (foreground-color . "#eaeaea") (tool-bar-lines . 0) (background-color . "#1c1c1c") (font . "tty") (height . 55) (width . 185) (modeline . t) (unsplittable) (menu-bar-lines . 1) (internal-border-width . 0) (frameset--id . "A232-20A7-50C3-6FF9") (frameset--mini t)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 2) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 4) (min-pixel-width . 10) (min-pixel-height-ignore . 2) (min-pixel-width-ignore . 2) (min-pixel-height-safe . 1) (min-pixel-width-safe . 2)) leaf (pixel-width . 185) (pixel-height . 54) (total-width . 185) (total-height . 54) (normal-height . 1.0) (normal-width . 1.0) (buffer ".git-credentials" (selected . t) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 60) (start . 1))))])
+(setq comint-input-ring nil)
+(setq compile-history nil)
+(setq desktop-missing-file-warning nil)
+(setq dired-regexp-history nil)
+(setq extended-command-history '("package-refresh-contents" "origami-close-all-nodes" "global-origami-mode" "origami-mode" "package-install" "eval-buffer" "package-autoremove" "make-frame" "dired-sidebar-show-sidebar" "load-file" "eval-defun" "customize-themes" "load-theme" "helm-grep-do-git-grep" "flycheck-buffer"))
+(setq face-name-history nil)
+(setq file-name-history '("~/.git-credentials" "~/.emacs.d/custom.el" "~/.gitconfig" "~/.emacs.d/custom.el" "~/.tmux.conf" "~/hs/factorial.hs" "~/chain/chain.go" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.tmux.conf" "~/hs/factorial.hs" "~/.emacs.d/init.el" "~/chain/chain.go" "~/.emacs.d/custom.el" "~/.tmux.conf" "~/hs/factorial.hs" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.tmux.conf" "~/hs/factorial.hs" "~/.emacs.d/elpa-26.3/lsp-haskell-20191230.1847/lsp-haskell-autoloads.el" "~/.emacs.d/custom.el" "~/.emacs.d/elpa-26.3/lsp-ui-20200224.743/lsp-ui-autoloads.el" "~/.emacs.d/elpa-26.3/lsp-mode-20200229.1850/lsp-mode-autoloads.el" "~/.emacs.d/custom.el" "~/.emacs.d/elpa-26.3/lv-20200227.1301/lv-autoloads.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.tmux.conf" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.tmux.conf" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/chain/chain.go" "~/.emacs.d/custom.el" "~/.zshrc" "~/.bash_profile" "~/chain/chain.go" "~/.emacs.d/custom.el" "~/chain/chain.go" "~/.zshrc" "~/.bash_profile" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "/Users/evincent/EN/moj/justice/domain-node-mgr/Dockerfile" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld"))
+(setq grep-find-history nil)
+(setq grep-history nil)
+(setq ivy-history '("lsp has" "lsp " "lsp mod" "lsp" "lsp mo" "scr" "all" "all th" "dired sid" "fter" "helm" "tab-" "go-gu" "company-go" "lsp-mo" "gri" "esup"))
+(setq minibuffer-history '("/Users/evincent/" "/Users/evincent/.emacs.d/" "/Users/evincent/" "/Users/evincent/chain/" "/Users/evincent/" "/Users/evincent/.emacs.d/ini" "/Users/evincent/.emacs.d/"))
+(setq org-clock-history nil)
+(setq org-refile-history nil)
+(setq org-tags-history nil)
+(setq query-replace-history nil)
+(setq read-expression-history nil)
+(setq regexp-history nil)
+(setq regexp-search-ring nil)
+(setq register-alist '((48 . ";;----------------------------------------------------------------------------\n;; Locales (setting them earlier in this file doesn't work in X)\n;;----------------------------------------------------------------------------\n")))
+(setq search-ring '("require" "req" "tab" "mode" "hs " "ini" "emacs" "emmacs" "em" "init" "emacs" "ema" "emacs" "init" "em" "ema"))
+(setq shell-command-history nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/Users/evincent/.git-credentials"
+  ".git-credentials"
+  'fundamental-mode
+  '(ns-auto-titlebar-mode helm-mode immortal-scratch-mode auto-compile-on-load-mode projectile-mode diff-hl-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode beacon-mode global-auto-revert-mode company-mode ivy-mode counsel-mode anzu-mode)
+  60
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24155 29884 564764 0) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/evincent/.gitconfig"
+  ".gitconfig"
+  'gitconfig-mode
+  '(ns-auto-titlebar-mode helm-mode immortal-scratch-mode auto-compile-on-load-mode projectile-mode diff-hl-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode beacon-mode global-auto-revert-mode symbol-overlay-mode company-mode ivy-mode counsel-mode flycheck-mode anzu-mode)
+  226
+  '(nil nil)
+  nil
+  nil
+  '((show-trailing-whitespace . t) (indent-tabs-mode . t) (buffer-display-time 24155 29869 255991 809000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
