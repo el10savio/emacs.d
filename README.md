@@ -123,3 +123,4 @@ versions (see "Updates" above). If you still experience problems, go ahead and
 [✍ sanityinc.com](http://www.sanityinc.com/)
 
 [🐦 @sanityinc](https://twitter.com/sanityinc)
+Majorly From https://github.com/purcell/emacs.d with slight modifications
