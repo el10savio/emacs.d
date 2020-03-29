@@ -2,23 +2,23 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Sun Mar  1 14:09:33 2020
+;; Created Sat Mar 14 19:45:02 2020
 ;; Desktop file format version 208
 ;; Emacs version 26.3
 
 ;; Global section:
-(setq desktop-saved-frameset [frameset 1 (24155 29893 750652 0) (desktop . "208") "evincent@EVINCENT-C02ZG0" nil nil ((((minibuffer . t) (tty-type . "xterm-256color") (tty . "/dev/tty") (display-type . color) (background-mode . dark) (foreground-color . "#eaeaea") (tool-bar-lines . 0) (background-color . "#1c1c1c") (font . "tty") (height . 55) (width . 185) (modeline . t) (unsplittable) (menu-bar-lines . 1) (internal-border-width . 0) (frameset--id . "A232-20A7-50C3-6FF9") (frameset--mini t)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 2) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 4) (min-pixel-width . 10) (min-pixel-height-ignore . 2) (min-pixel-width-ignore . 2) (min-pixel-height-safe . 1) (min-pixel-width-safe . 2)) leaf (pixel-width . 185) (pixel-height . 54) (total-width . 185) (total-height . 54) (normal-height . 1.0) (normal-width . 1.0) (buffer ".git-credentials" (selected . t) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 60) (start . 1))))])
+(setq desktop-saved-frameset [frameset 1 (24172 59110 198528 0) (desktop . "208") "evincent@EVINCENT-C02ZG0" nil nil ((((minibuffer . t) (tty-type . "xterm-256color") (tty . "/dev/tty") (display-type . color) (background-mode . dark) (foreground-color . "#eaeaea") (tool-bar-lines . 0) (background-color . "#1c1c1c") (font . "tty") (height . 55) (width . 185) (modeline . t) (unsplittable) (menu-bar-lines . 1) (internal-border-width . 0) (frameset--id . "F58C-3502-0A85-58A3") (frameset--mini t)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 2) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 4) (min-pixel-width . 10) (min-pixel-height-ignore . 2) (min-pixel-width-ignore . 2) (min-pixel-height-safe . 1) (min-pixel-width-safe . 2)) leaf (pixel-width . 185) (pixel-height . 54) (total-width . 185) (total-height . 54) (normal-height . 1.0) (normal-width . 1.0) (buffer "chain.go" (selected . t) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated . t) (point . 739) (start . 549))))])
 (setq comint-input-ring nil)
 (setq compile-history nil)
 (setq desktop-missing-file-warning nil)
 (setq dired-regexp-history nil)
-(setq extended-command-history '("package-refresh-contents" "origami-close-all-nodes" "global-origami-mode" "origami-mode" "package-install" "eval-buffer" "package-autoremove" "make-frame" "dired-sidebar-show-sidebar" "load-file" "eval-defun" "customize-themes" "load-theme" "helm-grep-do-git-grep" "flycheck-buffer"))
+(setq extended-command-history '("package-install" "package-autoremove" "package-list-packages" "line-number-mode" "package-refresh-contents" "origami-close-all-nodes" "global-origami-mode" "origami-mode" "eval-buffer" "make-frame" "dired-sidebar-show-sidebar" "load-file" "eval-defun" "customize-themes" "load-theme" "helm-grep-do-git-grep" "flycheck-buffer"))
 (setq face-name-history nil)
-(setq file-name-history '("~/.git-credentials" "~/.emacs.d/custom.el" "~/.gitconfig" "~/.emacs.d/custom.el" "~/.tmux.conf" "~/hs/factorial.hs" "~/chain/chain.go" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.tmux.conf" "~/hs/factorial.hs" "~/.emacs.d/init.el" "~/chain/chain.go" "~/.emacs.d/custom.el" "~/.tmux.conf" "~/hs/factorial.hs" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.tmux.conf" "~/hs/factorial.hs" "~/.emacs.d/elpa-26.3/lsp-haskell-20191230.1847/lsp-haskell-autoloads.el" "~/.emacs.d/custom.el" "~/.emacs.d/elpa-26.3/lsp-ui-20200224.743/lsp-ui-autoloads.el" "~/.emacs.d/elpa-26.3/lsp-mode-20200229.1850/lsp-mode-autoloads.el" "~/.emacs.d/custom.el" "~/.emacs.d/elpa-26.3/lv-20200227.1301/lv-autoloads.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.tmux.conf" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.tmux.conf" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/chain/chain.go" "~/.emacs.d/custom.el" "~/.zshrc" "~/.bash_profile" "~/chain/chain.go" "~/.emacs.d/custom.el" "~/chain/chain.go" "~/.zshrc" "~/.bash_profile" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "/Users/evincent/EN/moj/justice/domain-node-mgr/Dockerfile" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld" "~/.emacs.d/init.el" "~/.zshrc" "~/.bash_profile" "~/.emacs.d/early-init.el" "~/.emacs.d/projectile-bookmarks.eld"))
+(setq file-name-history '("~/chain/chain.go" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/elpa-26.3/ggo-mode-20130524.1143/ggo-mode-autoloads.el" "~/.emacs.d/custom.el" "~/chain/chain.go" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/EN/efa-branch/GoDCApp/GoAuth/scripts/Dockerfile" "~/EN/efa-branch/GoDCApp/scripts/k3s-deployment/deploy_efa.sh" "~/.emacs.d/init.el" "~/.emacs.d/custom.el" "~/EN/efa-branch/GoDCApp/GoAuth/scripts/Dockerfile" "~/EN/efa-branch/GoDCApp/scripts/k3s-deployment/deploy_efa.sh" "~/.emacs.d/custom.el" "~/EN/efa-branch/GoDCApp/GoAuth/scripts/Dockerfile" "~/EN/efa-branch/GoDCApp/scripts/k3s-deployment/deploy_efa.sh" "~/.emacs.d/custom.el" "~/EN/efa-branch/GoDCApp/GoAuth/scripts/Dockerfile" "~/EN/efa-branch/GoDCApp/scripts/k3s-deployment/deploy_efa.sh" "~/.emacs.d/custom.el" "~/EN/efa-branch/GoDCApp/GoAuth/scripts/Dockerfile" "~/EN/efa-branch/GoDCApp/scripts/k3s-deployment/deploy_efa.sh" "~/.emacs.d/custom.el" "~/EN/efa-branch/GoDCApp/GoAuth/scripts/Dockerfile" "~/.emacs.d/custom.el" "/opt/certs/cert/cert.crt" "~/chain/chain.go" "~/EN/efa-branch/GoDCApp/scripts/k3s-deployment/deploy_efa.sh" "~/.zshrc" "~/EN/efa-branch/GoDCApp/GoCommon/src/efa-client/infra/cli/commands/login/utils/APIConfigurator.go" "~/.emacs.d/custom.el" "/opt/certs/cert/cert.crt" "~/chain/chain.go" "~/EN/efa-branch/GoDCApp/scripts/k3s-deployment/deploy_efa.sh" "~/.zshrc" "~/EN/efa-branch/GoDCApp/GoCommon/src/efa-client/infra/cli/commands/login/utils/APIConfigurator.go" "~/.emacs.d/custom.el" "/opt/certs/cert/cert.crt" "~/chain/chain.go" "~/EN/efa-branch/GoDCApp/scripts/k3s-deployment/deploy_efa.sh" "~/.zshrc" "~/EN/efa-branch/GoDCApp/GoCommon/src/efa-client/infra/cli/commands/login/utils/APIConfigurator.go" "~/.zshrc" "~/EN/efa-branch/GoDCApp/GoCommon/src/efa-client/infra/cli/commands/login/utils/APIConfigurator.go" "~/.emacs.d/custom.el" "/opt/certs/cert/cert.crt" "~/chain/chain.go" "~/EN/efa-branch/GoDCApp/scripts/k3s-deployment/deploy_efa.sh" "~/.emacs.d/custom.el" "/opt/certs/cert/cert.crt" "~/chain/chain.go" "~/.emacs.d/custom.el" "/opt/certs/cert/cert.crt" "~/chain/chain.go" "~/.emacs.d/custom.el" "/opt/certs/cert/cert.crt" "~/chain/chain.go" "~/.emacs.d/custom.el" "/opt/certs/cert/cert.crt" "~/.emacs.d/custom.el" "~/.gitconfig" "~/.git-credentials" "/opt/certs/cert/cert.crt" "~/.emacs.d/custom.el" "~/.gitconfig" "~/.git-credentials" "/opt/certs/cert/cert.crt" "~/.emacs.d/custom.el" "~/.gitconfig" "~/.git-credentials" "/opt/certs/cert/cert.crt" "~/.emacs.d/custom.el" "~/.gitconfig" "~/.git-credentials" "/opt/certs/cert/cert.crt" "~/.emacs.d/custom.el" "~/.gitconfig" "~/.git-credentials" "/opt/certs/cert/cert.crt" "~/.emacs.d/custom.el" "~/.gitconfig" "~/.git-credentials" "~/.emacs.d/custom.el" "~/.gitconfig" "~/.git-credentials" "~/.tmux.conf" "~/.emacs.d/custom.el" "~/.gitconfig"))
 (setq grep-find-history nil)
 (setq grep-history nil)
 (setq ivy-history '("lsp has" "lsp " "lsp mod" "lsp" "lsp mo" "scr" "all" "all th" "dired sid" "fter" "helm" "tab-" "go-gu" "company-go" "lsp-mo" "gri" "esup"))
-(setq minibuffer-history '("/Users/evincent/" "/Users/evincent/.emacs.d/" "/Users/evincent/" "/Users/evincent/chain/" "/Users/evincent/" "/Users/evincent/.emacs.d/ini" "/Users/evincent/.emacs.d/"))
+(setq minibuffer-history '("go-mo" "29" "/Users/evincent/" "/Users/evincent/.emacs.d/" "/Users/evincent/" "/Users/evincent/chain/" "/Users/evincent/" "/Users/evincent/.emacs.d/ini" "/Users/evincent/.emacs.d/"))
 (setq org-clock-history nil)
 (setq org-refile-history nil)
 (setq org-tags-history nil)
@@ -27,33 +27,81 @@
 (setq regexp-history nil)
 (setq regexp-search-ring nil)
 (setq register-alist '((48 . ";;----------------------------------------------------------------------------\n;; Locales (setting them earlier in this file doesn't work in X)\n;;----------------------------------------------------------------------------\n")))
-(setq search-ring '("require" "req" "tab" "mode" "hs " "ini" "emacs" "emmacs" "em" "init" "emacs" "ema" "emacs" "init" "em" "ema"))
+(setq search-ring '("chain" "env" "install" "installl" "sess" "emacx" "set -x" "not s" "efa_ca_cert_chain not set" "env" "allo" "log_dir" "chi" "tmux" "require" "req"))
 (setq shell-command-history nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 208
-  "/Users/evincent/.git-credentials"
-  ".git-credentials"
-  'fundamental-mode
-  '(ns-auto-titlebar-mode helm-mode immortal-scratch-mode auto-compile-on-load-mode projectile-mode diff-hl-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode beacon-mode global-auto-revert-mode company-mode ivy-mode counsel-mode anzu-mode)
-  60
+  "/Users/evincent/chain/chain.go"
+  "chain.go"
+  'go-mode
+  '(ns-auto-titlebar-mode helm-mode immortal-scratch-mode auto-compile-on-load-mode projectile-mode diff-hl-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode beacon-mode global-auto-revert-mode goto-address-prog-mode symbol-overlay-mode rainbow-delimiters-mode company-mode flycheck-mode anzu-mode)
+  739
   '(nil nil)
   nil
   nil
-  '((buffer-display-time 24155 29884 564764 0) (buffer-file-coding-system . undecided-unix))
+  '((show-trailing-whitespace . t) (indent-tabs-mode . t) (buffer-display-time 24172 59062 93024 0) (buffer-file-coding-system . undecided-unix))
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
-  "/Users/evincent/.gitconfig"
-  ".gitconfig"
-  'gitconfig-mode
-  '(ns-auto-titlebar-mode helm-mode immortal-scratch-mode auto-compile-on-load-mode projectile-mode diff-hl-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode beacon-mode global-auto-revert-mode symbol-overlay-mode company-mode ivy-mode counsel-mode flycheck-mode anzu-mode)
-  226
+  nil
+  "chain"
+  'dired-mode
+  '(ns-auto-titlebar-mode diredfl-mode helm-mode immortal-scratch-mode auto-compile-on-load-mode projectile-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode beacon-mode global-auto-revert-mode company-mode anzu-mode diff-hl-dired-mode)
+  251
+  '(nil nil)
+  t
+  '("/Users/evincent/chain/")
+  '((buffer-display-time 24172 59060 562045 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "evincent"
+  'dired-mode
+  '(ns-auto-titlebar-mode diredfl-mode helm-mode immortal-scratch-mode auto-compile-on-load-mode projectile-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode beacon-mode global-auto-revert-mode company-mode anzu-mode diff-hl-dired-mode)
+  5737
+  '(1525 nil)
+  t
+  '("/Users/evincent/")
+  '((buffer-display-time 24172 59055 865380 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/evincent/.emacs.d/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(eldoc-mode ns-auto-titlebar-mode helm-mode immortal-scratch-mode auto-compile-mode auto-compile-on-load-mode projectile-mode diff-hl-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode page-break-lines-mode beacon-mode global-auto-revert-mode goto-address-prog-mode symbol-overlay-mode rainbow-delimiters-mode highlight-quoted-mode aggressive-indent-mode paredit-mode elisp-slime-nav-mode company-mode flycheck-mode anzu-mode)
+  9639
+  '(8282 nil)
+  nil
+  nil
+  '((show-trailing-whitespace . t) (indent-tabs-mode) (buffer-display-time 24172 59055 461279 0) (buffer-file-coding-system . utf-8-unix) (overwrite-mode))
+  '((mark-ring (9572 8479 8169 7986 7679 3621 2865))))
+
+(desktop-create-buffer 208
+  nil
+  ".emacs.d"
+  'dired-mode
+  '(ns-auto-titlebar-mode diredfl-mode helm-mode immortal-scratch-mode auto-compile-on-load-mode projectile-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode beacon-mode global-auto-revert-mode company-mode anzu-mode diff-hl-dired-mode)
+  2154
+  '(nil nil)
+  t
+  '("/Users/evincent/.emacs.d/")
+  '((buffer-display-time 24172 58796 162318 700000))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/evincent/.emacs.d/custom.el"
+  "custom.el"
+  'emacs-lisp-mode
+  '(eldoc-mode ns-auto-titlebar-mode helm-mode immortal-scratch-mode auto-compile-mode auto-compile-on-load-mode projectile-mode diff-hl-mode whitespace-cleanup-mode which-key-mode hes-mode whole-line-or-region-local-mode page-break-lines-mode beacon-mode global-auto-revert-mode goto-address-prog-mode symbol-overlay-mode rainbow-delimiters-mode highlight-quoted-mode aggressive-indent-mode paredit-mode elisp-slime-nav-mode company-mode flycheck-mode anzu-mode)
+  1
   '(nil nil)
   nil
   nil
-  '((show-trailing-whitespace . t) (indent-tabs-mode . t) (buffer-display-time 24155 29869 255991 809000) (buffer-file-coding-system . undecided-unix))
+  '((show-trailing-whitespace . t) (indent-tabs-mode) (buffer-display-time 24172 58710 400246 700000) (buffer-file-coding-system . prefer-utf-8-unix) (overwrite-mode))
   '((mark-ring nil)))
 

@@ -65,8 +65,6 @@
 (require 'init-flycheck)
 
 (require 'init-recentf)
-(require 'init-smex)
-(require 'init-ivy)
 (require 'init-company)
 (require 'init-windows)
 (require 'init-sessions)
@@ -77,8 +75,6 @@
 
 (require 'init-vc)
 (require 'init-darcs)
-(require 'init-git)
-(require 'init-github)
 
 (require 'init-projectile)
 
@@ -111,11 +107,6 @@
 
 (require 'origami)
 
-;;(require 'init-twitter)
-;; (require 'init-mu)
-(require 'init-ledger)
-;; Extra packages which don't require any configuration
-
 (require-package 'gnuplot)
 (require-package 'lua-mode)
 (require-package 'htmlize)
@@ -125,10 +116,6 @@
 (unless (eq system-type 'windows-nt)
   (maybe-require-package 'daemons))
 (maybe-require-package 'dotenv-mode)
-
-(when (maybe-require-package 'uptimes)
-  (setq-default uptimes-keep-count 200)
-  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
 (when (fboundp 'global-eldoc-mode)
   (add-hook 'after-init-hook 'global-eldoc-mode))
@@ -233,6 +220,58 @@
   (setq dired-use-ls-dired nil))
 
 (global-set-key (kbd "C-b") 'dired-sidebar-toggle-sidebar)
+
+;;----------------------------------------------------------------------------
+;; Golang Configuration
+;;----------------------------------------------------------------------------
+
+;;Load Go-specific language syntax
+;;For gocode use https://github.com/mdempsky/gocode
+
+;;Custom Compile Command
+(defun go-mode-setup ()
+  (linum-mode 1)
+  (go-eldoc-setup)
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (local-set-key (kbd "M-.") 'godef-jump)
+  ;;(setq compile-command "echo Building... && go build -v && echo Testing... && go test -v && echo Linter... && golint")
+  (setq compilation-read-command nil)
+  (local-set-key (kbd "M-,") 'compile)
+  (add-hook 'go-mode-hook 'go-mode-setup)
+
+  ;;Load auto-complete
+  (ac-config-default)
+  (require 'auto-complete-config)
+  (require 'go-autocomplete)
+
+  ;;Go rename
+
+  (require 'go-rename)
+
+  ;;Configure golint
+  (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
+  (require 'golint)
+
+  ;;Smaller compilation buffer
+  (setq compilation-window-height 14)
+  (defun my-compilation-hook ()
+    (when (not (get-buffer-window "*compilation*"))
+      (save-selected-window
+        (save-excursion
+          (let* ((w (split-window-vertically))
+                 (h (window-height w)))
+            (select-window w)
+            (switch-to-buffer "*compilation*")
+            (shrink-window (- h compilation-window-height)))))))
+  (add-hook 'compilation-mode-hook 'my-compilation-hook)
+
+  ;;Other Key bindings
+  (global-set-key (kbd "C-/") 'comment-or-uncomment-region)
+
+  ;;Compilation autoscroll
+  (setq compilation-scroll-output t)
+  )
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
