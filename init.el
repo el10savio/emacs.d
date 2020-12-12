@@ -20,14 +20,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(doom-modeline-buffer-encoding nil)
  '(package-selected-packages
-   '(doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar afternoon-theme helm-projectile helm golden-ratio atom-one-dark-theme flycheck-rust racer company cargo rust-mode)))
+   '(which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(git-gutter:added ((t (:background "#50fa7b"))))
+ '(git-gutter:deleted ((t (:background "#ff79c6"))))
+ '(git-gutter:modified ((t (:background "#f1fa8c")))))
 
 ;; enable company mode at start
 (add-hook 'after-init-hook 'global-company-mode)
@@ -81,6 +84,10 @@
 
 (load-theme 'doom-palenight t)
 
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+(setq doom-modeline-vcs-max-length 40)
+
 (blink-cursor-mode 0)
 (setq-default cursor-type 'bar)
 (set-cursor-color "#cccccc")
@@ -91,6 +98,21 @@
 ;; Enable rainbow delimiters
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode 1)
+
+;;
+;; git-gutter
+;;
+(use-package git-gutter
+    :custom
+    (git-gutter:modified-sign "~")
+    (git-gutter:added-sign    "+")
+    (git-gutter:deleted-sign  "-")
+    :custom-face
+    (git-gutter:modified ((t (:background "#f1fa8c"))))
+    (git-gutter:added    ((t (:background "#50fa7b"))))
+    (git-gutter:deleted  ((t (:background "#ff79c6"))))
+    :config
+    (global-git-gutter-mode +1))
 
 ;;
 ;; neotree
