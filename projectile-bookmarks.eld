@@ -1,1 +1,0 @@
-("~/.emacs.d/" "~/EN/efa-branch/GoDCApp/")
