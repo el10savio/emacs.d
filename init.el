@@ -21,7 +21,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar afternoon-theme helm-projectile helm golden-ratio atom-one-dark-theme flycheck-rust racer company cargo rust-mode)))
+   '(yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar afternoon-theme helm-projectile helm golden-ratio atom-one-dark-theme flycheck-rust racer company cargo rust-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -43,6 +43,12 @@
   (find-file-other-window user-init-file))
 
 (global-set-key (kbd "C-c i") #'find-user-init-file)
+
+;; kill all running processes by default on exit
+(setq confirm-kill-processes nil)
+
+;; Bind C-c C-p to package install
+(global-set-key (kbd "C-c C-p") #'package-install)
 
 ;;
 ;; Display Settings
