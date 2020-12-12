@@ -21,7 +21,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(helm-rg helm-swoop elpy jedi dired-sidebar afternoon-theme helm-projectile helm golden-ratio atom-one-dark-theme flycheck-rust racer company cargo rust-mode)))
+   '(company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar afternoon-theme helm-projectile helm golden-ratio atom-one-dark-theme flycheck-rust racer company cargo rust-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -32,8 +32,8 @@
 ;; enable company mode at start
 (add-hook 'after-init-hook 'global-company-mode)
 
-;; company complete on TAB
-(global-set-key (kbd "TAB") 'company-complete)
+;; company complete on C-c TAB
+(global-set-key (kbd "C-c TAB") 'company-complete)
 
 ;; quickly open up init.el in new window
 ;;;###autoload
@@ -82,6 +82,20 @@
 ;; Enable rainbow delimiters
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode 1)
+;;
+;; neotree
+;;
+(require 'neotree)
+(global-set-key (kbd "C-c C-e") 'neotree-toggle)
+(setq neo-smart-open t)
+(setq neo-theme 'nerd)
+
+;;
+;; Shell
+;;
+
+;; Bind Open shell to C-c C-t 
+(global-set-key (kbd "C-c C-t") 'shell)
 
 ;;
 ;; HELM
@@ -158,32 +172,16 @@
 
 
 ;;
-;; Dired
+;; Python
 ;;
 
-(use-package dired-sidebar
-  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+(use-package lsp-mode
   :ensure t
-  :commands (dired-sidebar-toggle-sidebar)
-  :init
-  (add-hook 'dired-sidebar-mode-hook
-            (lambda ()
-              (unless (file-remote-p default-directory)
-                (auto-revert-mode))))
   :config
-  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
-  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
+  (add-hook 'python-mode-hook 'lsp))
 
-  (setq dired-sidebar-subtree-line-prefix "__")
-  (setq dired-sidebar-theme 'vscode)
-  (setq dired-sidebar-use-term-integration t)
-  (setq dired-sidebar-use-custom-font t))
+(use-package lsp-ui
+  :ensure t)
 
-;;
-;; Elpy
-;;
-
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
+(use-package company-lsp
+  :ensure t)
