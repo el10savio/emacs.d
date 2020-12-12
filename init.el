@@ -21,7 +21,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar afternoon-theme helm-projectile helm golden-ratio atom-one-dark-theme flycheck-rust racer company cargo rust-mode)))
+   '(doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar afternoon-theme helm-projectile helm golden-ratio atom-one-dark-theme flycheck-rust racer company cargo rust-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -44,17 +44,20 @@
 
 (global-set-key (kbd "C-c i") #'find-user-init-file)
 
+;; Bind C-c p to package install
+(global-set-key (kbd "C-c p") #'package-install)
+
+;; Bind C-c f to projectile find file
+(global-set-key (kbd "C-c f") #'projectile-find-file)
+
 ;; kill all running processes by default on exit
 (setq confirm-kill-processes nil)
-
-;; Bind C-c C-p to package install
-(global-set-key (kbd "C-c C-p") #'package-install)
 
 ;;
 ;; Display Settings
 ;;
 
-(require-package 'afternoon-theme)
+(require-package 'doom-themes)
 (require-package 'golden-ratio)
 
 (require 'golden-ratio)
@@ -76,7 +79,7 @@
       apropos-do-all t
       mouse-yank-at-point t)
 
-(load-theme 'afternoon t)
+(load-theme 'doom-palenight t)
 
 (blink-cursor-mode 0)
 (setq-default cursor-type 'bar)
@@ -88,20 +91,23 @@
 ;; Enable rainbow delimiters
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode 1)
+
 ;;
 ;; neotree
 ;;
 (require 'neotree)
-(global-set-key (kbd "C-c C-e") 'neotree-toggle)
+(require 'all-the-icons)
+(global-set-key (kbd "C-c C-a") 'neotree-toggle)
 (setq neo-smart-open t)
-(setq neo-theme 'nerd)
+(setq neo-theme 'icons)
+(setq neo-vc-integration '(face))
 
 ;;
 ;; Shell
 ;;
 
 ;; Bind Open shell to C-c C-t 
-(global-set-key (kbd "C-c C-t") 'shell)
+(global-set-key (kbd "C-t") 'shell)
 
 ;;
 ;; HELM
@@ -191,3 +197,14 @@
 
 (use-package company-lsp
   :ensure t)
+
+;; M-Ret to go to definition
+(add-hook 'python-mode-hook
+          (lambda () (local-set-key (kbd "M-RET") #'lsp-find-definition)))
+
+;; yapf on C-c C-s
+(add-hook 'python-mode-hook
+          (lambda () (local-set-key (kbd "C-c C-s") #'yapfify-buffer)))
+
+;; yapf on save
+(add-hook 'before-save-hook #'yapfify-buffer)
