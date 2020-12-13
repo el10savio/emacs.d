@@ -1,3 +1,5 @@
+/Users/evincent/.emacs.d/.gitignore
+/Users/evincent/.emacs.d/#.gitignore#
 /Users/evincent/.emacs.d/init.el
 /Users/evincent/.emacs.d/#init.el#
 /Users/evincent/EN/efa-branch/networking-extreme/networking_extreme/common/efa_health.py
