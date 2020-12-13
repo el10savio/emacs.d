@@ -1,4 +1,6 @@
-((magit-commit nil)
+((magit-blame
+  ("-w"))
+ (magit-commit nil)
  (magit-log
   ("-n256" "--graph" "--decorate")
   (("--" "./"))

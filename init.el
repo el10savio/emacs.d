@@ -21,8 +21,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(doom-modeline-buffer-encoding nil)
+ '(line-number-mode nil)
  '(package-selected-packages
-   '(which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode)))
+   '(centaur-tabs diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -123,6 +124,29 @@
 (setq neo-smart-open t)
 (setq neo-theme 'icons)
 (setq neo-vc-integration '(face))
+(setq neo-window-width 30)
+
+;;
+;; Linum 
+;;
+(add-hook 'prog-mode-hook 'linum-mode)
+(setq linum-format "%4d \u2502 ")
+
+;; ;; Highlight current line 
+;; (global-hl-line-mode +1)
+;; (set-face-background 'hl-line "#333333")
+
+;; Highlight current line number
+(require 'hlinum)
+(hlinum-activate)
+
+;;
+;; Centaur tabs
+;;
+;; (require 'centaur-tabs)
+;; (centaur-tabs-mode t)
+;; (global-set-key (kbd "C-`")  'centaur-tabs-backward)
+;; (global-set-key (kbd "C-1") 'centaur-tabs-forward)
 
 ;;
 ;; Shell
@@ -158,7 +182,6 @@
 
 ;; enable racer
 (setq racer-cmd "/Users/evincent/.cargo/bin/racer")
-;;(setq racer-rust-src-path "/Users/evincent/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/")
 (setq racer-rust-src-path "/Users/evincent/Code/rust/rust/src")
 	      
 (add-hook 'rust-mode-hook #'racer-mode)
@@ -208,6 +231,16 @@
 ;;
 ;; Python
 ;;
+
+(use-package flycheck
+  :init
+  (add-hook 'prog-mode-hook 'flycheck-mode)    ;;  global-flycheck-mode
+  (setq flycheck-display-errors-delay .3))
+
+(use-package company
+  :init (add-hook 'prog-mode-hook 'company-mode)
+  :config (setq company-tooltip-align-annotations t) ;; aligns annotation to the right hand side
+          (setq company-minimum-prefix-length 1))
 
 (use-package lsp-mode
   :ensure t
