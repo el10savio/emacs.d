@@ -23,7 +23,7 @@
  '(doom-modeline-buffer-encoding nil)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(centaur-tabs diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode)))
+   '(ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -83,7 +83,13 @@
       apropos-do-all t
       mouse-yank-at-point t)
 
-(load-theme 'doom-palenight t)
+(load-theme 'doom-one t)
+
+;; (set-background-color "#1f5582")
+
+;;
+;; modeline
+;;
 
 (require 'doom-modeline)
 (doom-modeline-mode 1)
@@ -100,6 +106,7 @@
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode 1)
 
+(show-paren-mode 1)
 ;;
 ;; git-gutter
 ;;
@@ -152,8 +159,8 @@
 ;; Shell
 ;;
 
-;; Bind Open shell to C-c C-t 
-(global-set-key (kbd "C-t") 'shell)
+;; Bind Open EShell to C-c C-t 
+(global-set-key (kbd "C-t") 'eshell)
 
 ;;
 ;; HELM
