@@ -9,4 +9,6 @@
   ("--author=Graham Clark <gclark@extremenetworks.com>"
    ("--" "./")))
  (magit-push nil)
+ (magit-stash
+  ("--all"))
  (magit:--author "Graham Clark <gclark@extremenetworks.com>"))

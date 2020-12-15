@@ -21,9 +21,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(doom-modeline-buffer-encoding nil)
+ '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode)))
+   '(pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+ '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -270,3 +272,8 @@
 
 ;; yapf on save
 (add-hook 'before-save-hook #'yapfify-buffer)
+
+;; flake8 checks
+;; (setq flycheck-python-flake8-executable "flake8")
+;; (flycheck-select-checker 'python-flake8)
+;; (flycheck-mode t)
