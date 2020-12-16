@@ -24,7 +24,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -95,6 +95,7 @@
 
 (require 'doom-modeline)
 (doom-modeline-mode 1)
+(display-time-mode 1)
 (setq doom-modeline-vcs-max-length 40)
 
 (blink-cursor-mode 0)
@@ -103,6 +104,30 @@
 (setq ring-bell-function 'ignore)
 
 (golden-ratio-mode 1)
+
+;;
+;; Dashboard
+;;
+
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+
+;; Set the title
+(setq dashboard-init-info "Hi Elton, Welcome back to Emacs")
+
+;; Set the banner
+(setq dashboard-startup-banner 'logo)
+;; Value can be
+;; 'official which displays the official emacs logo
+;; 'logo which displays an alternative emacs logo
+;; 1, 2 or 3 which displays one of the text banners
+;; "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever image/text you would prefer
+
+(setq dashboard-items '((recents  . 5)
+                        (projects . 5)			
+                        (bookmarks . 3)
+                        (agenda . 3)
+                        (registers . 3)))
 
 ;; Enable rainbow delimiters
 (require 'rainbow-delimiters)
