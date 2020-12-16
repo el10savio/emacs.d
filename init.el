@@ -152,13 +152,39 @@
 ;;
 ;; neotree
 ;;
-(require 'neotree)
-(require 'all-the-icons)
-(global-set-key (kbd "C-c C-a") 'neotree-toggle)
-(setq neo-smart-open t)
-(setq neo-theme 'icons)
-(setq neo-vc-integration '(face))
-(setq neo-window-width 30)
+;; (require 'neotree)
+;; (require 'all-the-icons)
+;; (global-set-key (kbd "C-c C-a") 'neotree-toggle)
+;; (setq neo-smart-open t)
+;; (setq neo-theme 'icons)
+;; (setq neo-vc-integration '(face))
+;; (setq neo-window-width 30)
+
+;;
+;; treemacs
+;;
+(use-package treemacs
+	:ensure t
+	:bind
+	(:map global-map
+	      ("C-c t" . treemacs)
+	      ("C-c /" . treemacs-visit-node-vertical-split)
+	      ("C-c -" . treemacs-visit-node-horizontal-split)
+	      )
+	:config
+	(progn
+	  (setq treemacs-is-never-other-window t
+		treemacs-follow-after-init t
+		treemacs-recenter-after-file-follow t
+		treemacs-width 30
+		treemacs-collapse-dirs (if (executable-find "python") 3 0)
+		treemacs-silent-refresh t
+		treemacs-silent-filewatch t
+		treemacs-sorting 'alphabetic-asc
+		treemacs-indentation 1
+		)))
+
+(setq treemacs-follow-mode t)
 
 ;;
 ;; Linum
