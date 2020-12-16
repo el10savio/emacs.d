@@ -136,18 +136,25 @@
 (setq neo-window-width 30)
 
 ;;
-;; Linum 
+;; Linum
 ;;
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d \u2502 ")
 
-;; ;; Highlight current line 
+;; ;; Highlight current line
 ;; (global-hl-line-mode +1)
 ;; (set-face-background 'hl-line "#333333")
 
 ;; Highlight current line number
 (require 'hlinum)
 (hlinum-activate)
+
+;; Delete trailing whitespaces on save
+(add-hook 'before-save-hook 'prog-delete-trailing-whitespace)
+
+(defun prog-delete-trailing-whitespace ()
+  (when (derived-mode-p 'prog-mode)
+    (delete-trailing-whitespace)))
 
 ;;
 ;; Centaur tabs
@@ -161,7 +168,7 @@
 ;; Shell
 ;;
 
-;; Bind Open EShell to C-c C-t 
+;; Bind Open EShell to C-c C-t
 (global-set-key (kbd "C-t") 'eshell)
 
 ;;
@@ -192,7 +199,7 @@
 ;; enable racer
 (setq racer-cmd "/Users/evincent/.cargo/bin/racer")
 (setq racer-rust-src-path "/Users/evincent/Code/rust/rust/src")
-	      
+
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'racer-mode-hook #'company-mode)
