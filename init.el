@@ -236,6 +236,9 @@
 ;; Global search bind to C-c s
 (global-set-key (kbd "C-c s") #'helm-projectile-rg)
 
+;; Local replce bind to C-c r
+(global-set-key (kbd "C-c r") #'replace-string)
+
 ;;
 ;; RUST configs
 ;;
