@@ -216,6 +216,15 @@
 ;; (global-set-key (kbd "C-1") 'centaur-tabs-forward)
 
 ;;
+;; Dired
+;;
+
+(use-package dired-subtree :ensure t
+  :after dired
+  :config
+  (bind-key "<tab>" #'dired-subtree-cycle dired-mode-map))
+
+;;
 ;; Shell
 ;;
 
