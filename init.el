@@ -41,6 +41,9 @@
 ;; company complete on C-c TAB
 (global-set-key (kbd "C-c TAB") 'company-complete)
 
+;; Bind C-c return to eval-buffer
+(global-set-key (kbd "C-c RET") 'eval-buffer)
+
 ;; quickly open up init.el in new window
 ;;;###autoload
 (defun find-user-init-file ()
@@ -79,8 +82,8 @@
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
-(set-face-attribute 'default nil :height 165)
-(setq-default line-spacing 0.4)
+(set-face-attribute 'default nil :height 200)
+(setq-default line-spacing 0.0)
 
 (setq
       x-select-enable-clipboard t
@@ -97,7 +100,7 @@
 
 ;; Set default font
 (set-face-attribute 'default nil
-                    :family "Hack"
+                    :family "Monaco"
                     :weight 'normal
                     :width 'normal)
 
@@ -110,7 +113,7 @@
 (display-time-mode 1)
 (setq doom-modeline-vcs-max-length 40)
 
-(blink-cursor-mode 0)
+(blink-cursor-mode 1)
 (setq-default cursor-type 'bar)
 (set-cursor-color "#cccccc")
 (setq ring-bell-function 'ignore)
