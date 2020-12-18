@@ -24,7 +24,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -59,7 +59,11 @@
 ;; kill all running processes by default on exit
 (setq confirm-kill-processes nil)
 
-;;
+;; Set up which-key
+(which-key-mode 1)
+(which-key-setup-side-window-right)
+
+;
 ;; Display Settings
 ;;
 
@@ -85,9 +89,17 @@
       apropos-do-all t
       mouse-yank-at-point t)
 
-(load-theme 'doom-one t)
+(load-theme 'doom-vibrant t)
 
-;; (set-background-color "#1f5582")
+;;
+;; Font
+;;
+
+;; Set default font
+(set-face-attribute 'default nil
+                    :family "Hack"
+                    :weight 'normal
+                    :width 'normal)
 
 ;;
 ;; modeline
@@ -124,7 +136,7 @@
 ;; "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever image/text you would prefer
 
 (setq dashboard-items '((recents  . 5)
-                        (projects . 5)			
+                        (projects . 5)
                         (bookmarks . 3)
                         (agenda . 3)
                         (registers . 3)))
@@ -223,6 +235,23 @@
   :after dired
   :config
   (bind-key "<tab>" #'dired-subtree-cycle dired-mode-map))
+
+;;
+;; Marginalia
+;;
+
+;; Enable richer annotations using the Marginalia package
+(use-package marginalia
+  :init
+
+  (marginalia-mode)
+
+  ;; Prefer richer, more heavy, annotations over the lighter default variant.
+  ;; E.g. M-x will show the documentation string additional to the keybinding.
+  ;; By default only the keybinding is shown as annotation.
+  ;; Note that there is the command `marginalia-cycle-annotators` to
+  ;; switch between the annotators.
+  (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light)))
 
 ;;
 ;; Shell
@@ -350,3 +379,8 @@
 ;; (setq flycheck-python-flake8-executable "flake8")
 ;; (flycheck-select-checker 'python-flake8)
 ;; (flycheck-mode t)
+
+;; Hs Minor mode
+(use-package hideshow
+  :init
+  (add-hook 'prog-mode-hook 'hs-minor-mode))
