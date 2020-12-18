@@ -24,7 +24,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -108,10 +108,13 @@
 ;; modeline
 ;;
 
-(require 'doom-modeline)
-(doom-modeline-mode 1)
-(display-time-mode 1)
-(setq doom-modeline-vcs-max-length 40)
+(require 'mood-line)
+(mood-line-mode)
+
+(setq-default header-line-format mode-line-format)
+(setq-default mode-line-format nil)
+
+(set-face-background 'header-line "#18191f")
 
 (blink-cursor-mode 1)
 (setq-default cursor-type 'bar)
@@ -139,10 +142,8 @@
 ;; "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever image/text you would prefer
 
 (setq dashboard-items '((recents  . 5)
-                        (projects . 5)
                         (bookmarks . 3)
-                        (agenda . 3)
-                        (registers . 3)))
+                        (agenda . 3)))
 
 ;; Enable rainbow delimiters
 (require 'rainbow-delimiters)
@@ -191,7 +192,7 @@
 	  (setq treemacs-is-never-other-window t
 		treemacs-follow-after-init t
 		treemacs-recenter-after-file-follow t
-		treemacs-width 30
+		treemacs-width 25
 		treemacs-collapse-dirs (if (executable-find "python") 3 0)
 		treemacs-silent-refresh t
 		treemacs-silent-filewatch t
@@ -199,6 +200,7 @@
 		treemacs-indentation 1
 		)))
 
+(treemacs-resize-icons 18)
 (setq treemacs-follow-mode t)
 
 ;;

@@ -24,7 +24,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -40,6 +40,9 @@
 
 ;; company complete on C-c TAB
 (global-set-key (kbd "C-c TAB") 'company-complete)
+
+;; Bind C-c return to eval-buffer
+(global-set-key (kbd "C-c RET") 'eval-buffer)
 
 ;; quickly open up init.el in new window
 ;;;###autoload
@@ -59,7 +62,11 @@
 ;; kill all running processes by default on exit
 (setq confirm-kill-processes nil)
 
-;;
+;; Set up which-key
+(which-key-mode 1)
+(which-key-setup-side-window-right)
+
+;
 ;; Display Settings
 ;;
 
@@ -75,8 +82,8 @@
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
-(set-face-attribute 'default nil :height 165)
-(setq-default line-spacing 0.4)
+(set-face-attribute 'default nil :height 200)
+(setq-default line-spacing 0.0)
 
 (setq
       x-select-enable-clipboard t
@@ -85,20 +92,49 @@
       apropos-do-all t
       mouse-yank-at-point t)
 
-(load-theme 'doom-one t)
+(load-theme 'doom-vibrant t)
 
-;; (set-background-color "#1f5582")
+;;
+;; Font
+;;
+
+;; Set default font
+(set-face-attribute 'default nil
+                    :family "Monaco"
+                    :weight 'normal
+                    :width 'normal)
 
 ;;
 ;; modeline
 ;;
 
 (require 'doom-modeline)
-(doom-modeline-mode 1)
+
 (display-time-mode 1)
 (setq doom-modeline-vcs-max-length 40)
 
-(blink-cursor-mode 0)
+(setq doom-modeline-height 0.8)
+(set-face-attribute 'mode-line nil :family "Monaco" :height 120)
+(set-face-attribute 'mode-line-inactive nil :family "Monaco" :height 120)
+
+(setq-default header-line-format mode-line-format)
+(setq-default mode-line-format nil)
+(setq doom-modeline-window-width-limit fill-column)
+
+
+;; Define your custom doom-modeline
+(doom-modeline-def-modeline 'my-simple-line
+  '(bar matches buffer-info buffer-encoding)
+  '(major-mode process vcs))
+
+;; Add to `doom-modeline-mode-hook` or other hooks
+(defun setup-custom-doom-modeline ()
+   (doom-modeline-set-modeline 'my-simple-line))
+(add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
+
+(doom-modeline-mode 1)
+
+(blink-cursor-mode 1)
 (setq-default cursor-type 'bar)
 (set-cursor-color "#cccccc")
 (setq ring-bell-function 'ignore)
@@ -124,10 +160,8 @@
 ;; "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever image/text you would prefer
 
 (setq dashboard-items '((recents  . 5)
-                        (projects . 5)			
                         (bookmarks . 3)
-                        (agenda . 3)
-                        (registers . 3)))
+                        (agenda . 3)))
 
 ;; Enable rainbow delimiters
 (require 'rainbow-delimiters)
@@ -176,7 +210,7 @@
 	  (setq treemacs-is-never-other-window t
 		treemacs-follow-after-init t
 		treemacs-recenter-after-file-follow t
-		treemacs-width 30
+		treemacs-width 25
 		treemacs-collapse-dirs (if (executable-find "python") 3 0)
 		treemacs-silent-refresh t
 		treemacs-silent-filewatch t
@@ -184,6 +218,7 @@
 		treemacs-indentation 1
 		)))
 
+(treemacs-resize-icons 18)
 (setq treemacs-follow-mode t)
 
 ;;
@@ -223,6 +258,23 @@
   :after dired
   :config
   (bind-key "<tab>" #'dired-subtree-cycle dired-mode-map))
+
+;;
+;; Marginalia
+;;
+
+;; Enable richer annotations using the Marginalia package
+(use-package marginalia
+  :init
+
+  (marginalia-mode)
+
+  ;; Prefer richer, more heavy, annotations over the lighter default variant.
+  ;; E.g. M-x will show the documentation string additional to the keybinding.
+  ;; By default only the keybinding is shown as annotation.
+  ;; Note that there is the command `marginalia-cycle-annotators` to
+  ;; switch between the annotators.
+  (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light)))
 
 ;;
 ;; Shell
@@ -350,3 +402,8 @@
 ;; (setq flycheck-python-flake8-executable "flake8")
 ;; (flycheck-select-checker 'python-flake8)
 ;; (flycheck-mode t)
+
+;; Hs Minor mode
+(use-package hideshow
+  :init
+  (add-hook 'prog-mode-hook 'hs-minor-mode))
