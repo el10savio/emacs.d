@@ -66,7 +66,7 @@
 (which-key-mode 1)
 (which-key-setup-side-window-right)
 
-;
+;;
 ;; Display Settings
 ;;
 
@@ -283,7 +283,11 @@
 (global-set-key (kbd "C-c r") #'replace-string)
 
 ;;
-;; RUST configs
+;; Code
+;;
+
+;;
+;; RUST
 ;;
 
 ;; rustfmt on save
