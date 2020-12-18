@@ -24,7 +24,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons neotree helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -144,6 +144,29 @@
 (setq dashboard-items '((recents  . 5)
                         (bookmarks . 3)
                         (agenda . 3)))
+
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
+
+(setq dashboard-set-navigator t)
+
+;; Format: "(icon title help action face prefix suffix)"
+(setq dashboard-navigator-buttons
+      `(;; line1
+        ((,(all-the-icons-faicon "server" :height 1.1 :v-adjust 0.0)
+         "GoDCApp"
+         "Open GoDCApp Repo"
+         (lambda (&rest _) (find-file "/Users/evincent/EN/efa-branch/GoDCApp")))
+         (,(all-the-icons-faicon "wifi" :height 1.1 :v-adjust 0.0)
+         "networking-extreme"
+         "Open OS Plugin Repo"
+         (lambda (&rest _) (find-file "/Users/evincent/EN/efa-branch/networking-extreme")))
+         (,(all-the-icons-faicon "desktop" :height 1.1 :v-adjust 0.0)
+         "emacs.d"
+         "Open Emacs Config"
+         (lambda (&rest _) (find-file "/Users/evincent/.emacs.d")))
+         )))
+
 
 ;; Enable rainbow delimiters
 (require 'rainbow-delimiters)
@@ -278,6 +301,9 @@
 
 ;; Global search bind to C-c s
 (global-set-key (kbd "C-c s") #'helm-projectile-rg)
+
+;; Local search bind to C-c f
+(global-set-key (kbd "C-c f") #'occur)
 
 ;; Local replce bind to C-c r
 (global-set-key (kbd "C-c r") #'replace-string)
