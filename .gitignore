@@ -52,3 +52,5 @@ recentf
 projectile-bookmarks.eld
 
 org-clock-save.el
+/.cache/
+/transient/
