@@ -54,3 +54,5 @@ projectile-bookmarks.eld
 org-clock-save.el
 /.cache/
 /transient/
+/.mc-lists.el
+/ac-comphist.dat

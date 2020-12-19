@@ -24,7 +24,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -36,10 +36,10 @@
  '(git-gutter:modified ((t (:background "#f1fa8c")))))
 
 ;; enable company mode at start
-(add-hook 'after-init-hook 'global-company-mode)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;; company complete on C-c TAB
-(global-set-key (kbd "C-c TAB") 'company-complete)
+;; (global-set-key (kbd "C-c TAB") 'company-complete)
 
 ;; Bind C-c return to eval-buffer
 (global-set-key (kbd "C-c RET") 'eval-buffer)
@@ -302,11 +302,13 @@
 ;; Global search bind to C-c s
 (global-set-key (kbd "C-c s") #'helm-projectile-rg)
 
-;; Local search bind to C-c f
-(global-set-key (kbd "C-c f") #'occur)
+;; Local search bind to C-c o
+(global-set-key (kbd "C-c o") #'occur)
 
 ;; Local replce bind to C-c r
 (global-set-key (kbd "C-c r") #'replace-string)
+
+(setq helm-rg-default-directory 'git-root)
 
 ;;
 ;; Code
@@ -384,7 +386,7 @@
   (setq flycheck-display-errors-delay .3))
 
 (use-package company
-  :init (add-hook 'prog-mode-hook 'company-mode)
+  :init (add-hook 'python-mode-hook 'company-mode)
   :config (setq company-tooltip-align-annotations t) ;; aligns annotation to the right hand side
           (setq company-minimum-prefix-length 1))
 
@@ -419,3 +421,21 @@
 (use-package hideshow
   :init
   (add-hook 'prog-mode-hook 'hs-minor-mode))
+
+;;
+;; Go
+;;
+
+;; Init the auto complete modules
+(require 'go-autocomplete)
+
+(defun auto-complete-for-go ()
+(auto-complete-mode 1))
+(add-hook 'go-mode-hook 'auto-complete-for-go)
+
+;; Just to make sure go tools are enabled
+(add-to-list 'exec-path "~/go/bin")
+
+;; Automatically format code on save
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save)
