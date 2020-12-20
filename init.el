@@ -24,7 +24,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -308,7 +308,19 @@
 ;; Local replce bind to C-c r
 (global-set-key (kbd "C-c r") #'replace-string)
 
+;; Fix for helm-rg to work
+(setq  helm-rg-ripgrep-executable "/usr/local/bin/rg")
 (setq helm-rg-default-directory 'git-root)
+
+;;
+;; Avy
+;;
+
+;; Global avy find char bind to M-s c
+(global-set-key (kbd "M-s c") #'avy-goto-char)
+
+;; Global avy find line bind to M-s l
+(global-set-key (kbd "M-s l") #'avy-goto-line)
 
 ;;
 ;; Code
@@ -426,11 +438,30 @@
 ;; Go
 ;;
 
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (replace-regexp-in-string
+                          "[ \t\n]*$"
+                          ""
+                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq eshell-path-env path-from-shell) ; for eshell users
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(when window-system (set-exec-path-from-shell-PATH))
+
+(add-to-list 'exec-path "/Users/evincent/.go/bin")
+
 ;; Init the auto complete modules
 (require 'go-autocomplete)
 
 (defun auto-complete-for-go ()
-(auto-complete-mode 1))
+  (auto-complete-mode 1)
+  (yas-minor-mode-on))
+
+(add-hook 'go-mode-hook 'company-mode)
+(add-hook 'go-mode-hook (lambda ()
+  (set (make-local-variable 'company-backends) '(company-go))
+  (company-mode)))
 (add-hook 'go-mode-hook 'auto-complete-for-go)
 
 ;; Just to make sure go tools are enabled

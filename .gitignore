@@ -56,3 +56,4 @@ org-clock-save.el
 /transient/
 /.mc-lists.el
 /ac-comphist.dat
+/.lsp-session-v1
