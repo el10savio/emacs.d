@@ -92,6 +92,8 @@
       apropos-do-all t
       mouse-yank-at-point t)
 
+(setq-default truncate-lines t)
+
 (load-theme 'doom-vibrant t)
 
 ;;
