@@ -419,12 +419,13 @@
 (add-hook 'python-mode-hook
           (lambda () (local-set-key (kbd "M-RET") #'lsp-find-definition)))
 
-;; yapf on C-C-s
+;; yapf on C-c C-s
 (add-hook 'python-mode-hook
           (lambda () (local-set-key (kbd "C-c C-s") #'yapfify-buffer)))
 
 ;; yapf on save
-(add-hook 'before-save-hook #'yapfify-buffer)
+(add-hook 'python-mode-hook
+          (lambda () (add-hook 'before-save-hook #'yapfify-buffer)))
 
 ;; flake8 checks
 ;; (setq flycheck-python-flake8-executable "flake8")
