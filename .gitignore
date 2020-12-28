@@ -57,3 +57,4 @@ org-clock-save.el
 /.mc-lists.el
 /ac-comphist.dat
 /.lsp-session-v1
+/ido.last

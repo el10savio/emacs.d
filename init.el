@@ -24,7 +24,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-modeline doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg helm-swoop elpy jedi dired-sidebar helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -58,6 +58,15 @@
 
 ;; Bind C-c f to projectile find file
 (global-set-key (kbd "C-c f") #'projectile-find-file)
+
+;; Global search bind to C-c s
+(global-set-key (kbd "C-c s") #'helm-projectile-rg)
+
+;; Local search bind to C-c o
+(global-set-key (kbd "C-c o") #'occur)
+
+;; Local replce bind to C-c r
+(global-set-key (kbd "C-c r") #'replace-string)
 
 ;; kill all running processes by default on exit
 (setq confirm-kill-processes nil)
@@ -96,7 +105,6 @@
 
 (load-theme 'doom-vibrant t)
 
-;;
 ;; Font
 ;;
 
@@ -144,8 +152,7 @@
 ;; "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever image/text you would prefer
 
 (setq dashboard-items '((recents  . 5)
-                        (bookmarks . 3)
-                        (agenda . 3)))
+                        (bookmarks . 3)))
 
 (setq dashboard-set-heading-icons t)
 (setq dashboard-set-file-icons t)
@@ -225,14 +232,14 @@
 		treemacs-indentation 1
 		)))
 
-(treemacs-resize-icons 18)
+(treemacs-resize-icons 15)
 (setq treemacs-follow-mode t)
 
 ;;
 ;; Linum
 ;;
 (add-hook 'prog-mode-hook 'linum-mode)
-(setq linum-format "%4d \u2502 ")
+(setq linum-format "%4d \u2502")
 
 ;; ;; Highlight current line
 ;; (global-hl-line-mode +1)
@@ -248,14 +255,6 @@
 (defun prog-delete-trailing-whitespace ()
   (when (derived-mode-p 'prog-mode)
     (delete-trailing-whitespace)))
-
-;;
-;; Centaur tabs
-;;
-;; (require 'centaur-tabs)
-;; (centaur-tabs-mode t)
-;; (global-set-key (kbd "C-`")  'centaur-tabs-backward)
-;; (global-set-key (kbd "C-1") 'centaur-tabs-forward)
 
 ;;
 ;; Dired
@@ -287,8 +286,16 @@
 ;; Shell
 ;;
 
+(defun eshell-other-window ()
+  "Open `eshell' in a new window."
+  (interactive)
+  (let ((buf (eshell)))
+    (switch-to-buffer (other-buffer buf))
+    (switch-to-buffer-other-window buf)))
+
 ;; Bind Open EShell to C-c C-t
-(global-set-key (kbd "C-t") 'eshell)
+(global-set-key (kbd "C-t") 'eshell-other-window)
+
 
 ;;
 ;; HELM
@@ -301,14 +308,10 @@
 ;; To bind to M-x
 (global-set-key (kbd "M-x") 'helm-M-x)
 
-;; Global search bind to C-c s
-(global-set-key (kbd "C-c s") #'helm-projectile-rg)
-
-;; Local search bind to C-c o
-(global-set-key (kbd "C-c o") #'occur)
-
-;; Local replce bind to C-c r
-(global-set-key (kbd "C-c r") #'replace-string)
+;; Helm Fuzzy Search
+(setq helm-completion-style 'emacs)
+(setq completion-styles `(basic partial-completion emacs22 initials
+                                ,(if (version<= emacs-version "27.0") 'helm-flex 'flex)))
 
 ;; Fix for helm-rg to work
 (setq  helm-rg-ripgrep-executable "/usr/local/bin/rg")
@@ -452,7 +455,7 @@
 
 (when window-system (set-exec-path-from-shell-PATH))
 
-(add-to-list 'exec-path "/Users/evincent/.go/bin")
+(add-to-list 'exec-path "~/.go/bin")
 
 ;; Init the auto complete modules
 (require 'go-autocomplete)
