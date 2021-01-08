@@ -205,6 +205,13 @@
 ;; Find Commits Affecting a Function M-x magit-log-trace-definition
 ;; Find Commits Affecting a File M-x magit-log-buffer-file
 
+;; Magit Ediff
+(custom-set-variables
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(ediff-split-window-function 'split-window-horizontally))
+
+(setq magit-ediff-dwim-show-on-hunks t)
+
 ;;
 ;; neotree
 ;;
