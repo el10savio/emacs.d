@@ -111,6 +111,7 @@
 ;; Set default font
 (set-face-attribute 'default nil
                     :family "Monaco"
+		    :height 185
                     :weight 'normal
                     :width 'normal)
 
@@ -198,6 +199,13 @@
     (global-git-gutter-mode +1))
 
 ;;
+;; Magit
+;;
+
+;; Find Commits Affecting a Function M-x magit-log-trace-definition
+;; Find Commits Affecting a File M-x magit-log-buffer-file
+
+;;
 ;; neotree
 ;;
 ;; (require 'neotree)
@@ -225,7 +233,9 @@
 		treemacs-follow-after-init t
 		treemacs-recenter-after-file-follow t
 		treemacs-width 25
-		treemacs-collapse-dirs (if (executable-find "python") 3 0)
+		treemacs-indentation 2
+		treemacs-indentation-string " "
+  		treemacs-collapse-dirs (if (executable-find "python") 3 0)
 		treemacs-silent-refresh t
 		treemacs-silent-filewatch t
 		treemacs-sorting 'alphabetic-asc
