@@ -21,10 +21,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(doom-modeline-buffer-encoding nil)
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(ace-jump-buffer vc-msg elisp-format git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg elisp-format git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -171,6 +173,10 @@
          "networking-extreme"
          "Open OS Plugin Repo"
          (lambda (&rest _) (find-file "/Users/evincent/EN/efa-branch/networking-extreme")))
+         (,(all-the-icons-faicon "check-circle" :height 1.1 :v-adjust 0.0)
+         "todo.org"
+         "Open todo.org"
+         (lambda (&rest _) (find-file "/Users/evincent/todo.org")))
          (,(all-the-icons-faicon "desktop" :height 1.1 :v-adjust 0.0)
          "emacs.d"
          "Open Emacs Config"
@@ -206,9 +212,7 @@
 ;; Find Commits Affecting a File M-x magit-log-buffer-file
 
 ;; Magit Ediff
-(custom-set-variables
- '(ediff-window-setup-function 'ediff-setup-windows-plain)
- '(ediff-split-window-function 'split-window-horizontally))
+
 
 (setq magit-ediff-dwim-show-on-hunks t)
 
@@ -441,6 +445,13 @@
 
 (use-package company-lsp
   :ensure t)
+
+(use-package blacken
+  :ensure t
+  :hook ((python-mode . blacken-mode))
+  :config
+  (setq blacken-line-length 80)
+  (setq blacken-skip-string-normalization t))
 
 ;; M-Ret to go to definition
 (add-hook 'python-mode-hook
