@@ -458,17 +458,23 @@
   (setq blacken-line-length 80)
   (setq blacken-skip-string-normalization t))
 
+(defun py-save-commands ()
+  "Linter on Save for Python"
+  (interactive)
+  (yapfify-buffer)
+  (pyimpsort-buffer))
+
+;; Enable python yasnippets
+;; (add-hook 'python-mode-hook 'yas-minor-mode)
+;; (add-hook 'python-mode-hook 'company-yas)
+
 ;; M-Ret to go to definition
 (add-hook 'python-mode-hook
           (lambda () (local-set-key (kbd "M-RET") #'lsp-find-definition)))
 
-;; yapf on C-c C-s
+;; yapf and pyimport on C-c C-s
 (add-hook 'python-mode-hook
-          (lambda () (local-set-key (kbd "C-c C-s") #'yapfify-buffer)))
-
-;; yapf on save
-(add-hook 'python-mode-hook
-          (lambda () (add-hook 'before-save-hook #'yapfify-buffer)))
+          (lambda () (interactive) (local-set-key (kbd "C-c C-s") 'py-save-commands)))
 
 ;; flake8 checks
 ;; (setq flycheck-python-flake8-executable "flake8")
