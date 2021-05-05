@@ -26,7 +26,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -105,8 +105,10 @@
 
 (setq-default truncate-lines t)
 
-(load-theme 'doom-vibrant t)
+;; overwrite selected text
+(delete-selection-mode t)
 
+(load-theme 'doom-vibrant t)
 
 
 ;; Font
@@ -220,6 +222,8 @@
 
 
 (setq magit-ediff-dwim-show-on-hunks t)
+
+(add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 
 ;;
 ;; neotree
