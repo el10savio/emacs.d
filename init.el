@@ -26,7 +26,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -108,7 +108,7 @@
 ;; overwrite selected text
 (delete-selection-mode t)
 
-(load-theme 'doom-vibrant t)
+(load-theme 'doom-dark+ t)
 
 
 ;; Font
@@ -134,7 +134,10 @@
 (setq-default header-line-format mode-line-format)
 (setq-default mode-line-format nil)
 
-(set-face-background 'header-line "#18191f")
+;;(set-face-background 'header-line "#18191f")
+;;(set-face-background 'header-line "#444858")
+(set-face-background 'header-line "#393c49")
+
 
 (blink-cursor-mode 1)
 (setq-default cursor-type 'bar)
@@ -270,6 +273,7 @@
 ;;
 (add-hook 'prog-mode-hook 'linum-mode)
 (setq linum-format "%4d \u2502")
+(set-face-background 'fringe nil)
 
 ;; ;; Highlight current line
 ;; (global-hl-line-mode +1)
