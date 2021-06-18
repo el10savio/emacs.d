@@ -117,7 +117,7 @@
 ;; Set default font
 (set-face-attribute 'default nil
                     :family "Monaco"
-		    :height 185
+		    :height 180
                     :weight 'normal
                     :width 'normal)
 
@@ -164,8 +164,7 @@
 ;; 1, 2 or 3 which displays one of the text banners
 ;; "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever image/text you would prefer
 
-(setq dashboard-items '((recents  . 8)
-                        (bookmarks . 3)))
+(setq dashboard-items '((recents  . 8)))
 
 (setq dashboard-set-heading-icons t)
 (setq dashboard-set-file-icons t)

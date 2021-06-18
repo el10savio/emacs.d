@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: for range
-# key: range
+# key: forr
 # contributor : @atotto
 # --
 for ${3:key}, ${2:value} := range ${1:target} {
