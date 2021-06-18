@@ -26,7 +26,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -164,7 +164,7 @@
 ;; 1, 2 or 3 which displays one of the text banners
 ;; "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever image/text you would prefer
 
-(setq dashboard-items '((recents  . 5)
+(setq dashboard-items '((recents  . 8)
                         (bookmarks . 3)))
 
 (setq dashboard-set-heading-icons t)
@@ -527,11 +527,13 @@
   (auto-complete-mode 1)
   (yas-minor-mode-on))
 
+(add-hook 'go-mode-hook 'lsp-deferred)
 (add-hook 'go-mode-hook 'company-mode)
 (add-hook 'go-mode-hook (lambda ()
   (set (make-local-variable 'company-backends) '(company-go))
   (company-mode)))
-(add-hook 'go-mode-hook 'auto-complete-for-go)
+
+;;(add-hook 'go-mode-hook 'auto-complete-for-go)
 
 ;; Just to make sure go tools are enabled
 (add-to-list 'exec-path "~/go/bin")
