@@ -1,4 +1,7 @@
 
+;; Use y/n instead of yes/no
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;; Add MELPA
 (require 'package)
 (add-to-list 'package-archives
@@ -283,7 +286,7 @@
 (hlinum-activate)
 
 ;; Delete trailing whitespaces on save
-(add-hook 'before-save-hook 'prog-delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'prog-delete-trailing-whitespace)
 
 (defun prog-delete-trailing-whitespace ()
   (when (derived-mode-p 'prog-mode)
