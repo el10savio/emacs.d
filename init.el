@@ -356,6 +356,16 @@
 (setq  helm-rg-ripgrep-executable "/usr/local/bin/rg")
 (setq helm-rg-default-directory 'git-root)
 
+
+;;
+;; bm
+;;
+(require 'bm)
+
+(global-set-key (kbd "C-c b") 'bm-toggle)
+(global-set-key (kbd "C-c ]")   'bm-next)
+(global-set-key (kbd "C-c [") 'bm-previous)
+
 ;;
 ;; Avy
 ;;
