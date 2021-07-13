@@ -119,7 +119,6 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-follow-mouse 't)
-(setq scroll-preserve-screen-position t)
 (setq scroll-conservatively 100000)
 (setq scroll-error-top-bottom t)
 (setq scroll-preserve-screen-position t)
