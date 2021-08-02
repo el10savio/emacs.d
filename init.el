@@ -29,7 +29,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -480,7 +480,8 @@
 (use-package lsp-mode
   :ensure t
   :config
-  (add-hook 'python-mode-hook 'lsp))
+  (add-hook 'python-mode-hook 'lsp)
+  (setq lsp-file-watch-threshold 10000))
 
 (use-package lsp-ui
   :ensure t)
@@ -556,11 +557,15 @@
   (auto-complete-mode 1)
   (yas-minor-mode-on))
 
+(require 'smartparens-config)
+
 (add-hook 'go-mode-hook 'lsp-deferred)
 (add-hook 'go-mode-hook 'company-mode)
+(add-hook 'go-mode-hook #'smartparens-mode)
 (add-hook 'go-mode-hook (lambda ()
   (set (make-local-variable 'company-backends) '(company-go))
   (company-mode)))
+
 
 ;;(add-hook 'go-mode-hook 'auto-complete-for-go)
 
