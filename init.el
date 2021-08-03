@@ -58,6 +58,12 @@
 
 (global-set-key (kbd "C-c i") #'find-user-init-file)
 
+;; Bind s-> to end-of-buffer
+(global-set-key (kbd "s->") #'end-of-buffer)
+
+;; Bind s-< to begining-of-buffer
+(global-set-key (kbd "s-<") #'beginning-of-buffer)
+
 ;; Bind C-c p to package install
 (global-set-key (kbd "C-c p") #'package-install)
 
@@ -561,6 +567,7 @@
 
 (add-hook 'go-mode-hook 'lsp-deferred)
 (add-hook 'go-mode-hook 'company-mode)
+(add-hook 'go-mode-hook 'yas-minor-mode)
 (add-hook 'go-mode-hook #'smartparens-mode)
 (add-hook 'go-mode-hook (lambda ()
   (set (make-local-variable 'company-backends) '(company-go))
