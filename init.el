@@ -348,6 +348,10 @@
 ;; Bind Open EShell to C-c C-t
 (global-set-key (kbd "C-t") 'eshell-other-window)
 
+;; Bind Run Shell Command to C-p
+(global-set-key (kbd "C-p") 'shell-command)
+
+
 ;;
 ;; YAML Mode
 ;;
