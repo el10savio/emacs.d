@@ -338,15 +338,15 @@
 ;; Shell
 ;;
 
-(defun eshell-other-window ()
-  "Open `eshell' in a new window."
+(defun term-other-window ()
+  "Open `term' in a new window."
   (interactive)
-  (let ((buf (eshell)))
+  (let ((buf (term)))
     (switch-to-buffer (other-buffer buf))
     (switch-to-buffer-other-window buf)))
 
-;; Bind Open EShell to C-c C-t
-(global-set-key (kbd "C-t") 'eshell-other-window)
+;; Bind Open term to C-t
+(global-set-key (kbd "C-t") 'term-other-window)
 
 ;; Bind Run Shell Command to C-p
 (global-set-key (kbd "C-p") 'shell-command)
