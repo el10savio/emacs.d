@@ -217,6 +217,7 @@
 (rainbow-delimiters-mode 1)
 
 (show-paren-mode 1)
+
 ;;
 ;; git-gutter
 ;;
@@ -231,6 +232,21 @@
     (git-gutter:deleted  ((t (:background "#ff79c6"))))
     :config
     (global-git-gutter-mode +1))
+
+;;
+;; Duplicate Line
+;;
+
+(defun duplicate-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+)
+(global-set-key (kbd "C-d") 'duplicate-line)
 
 ;;
 ;; Magit
