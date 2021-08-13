@@ -29,7 +29,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(term-run zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -354,15 +354,26 @@
 ;; Shell
 ;;
 
+;; Open zsh terminal in new window
 (defun term-other-window ()
-  "Open `term' in a new window."
+  "Open `term` in a new window."
   (interactive)
   (let ((buf (term "/bin/zsh")))
     (switch-to-buffer (other-buffer buf))
     (switch-to-buffer-other-window buf)))
 
+;; Open terminal in new window
+;; and execute watch command
+(defun term-watch-other-window (command)
+  "Open `term` in a new window and execute watch command."
+  (interactive "sWatch: ")
+  (term-run-shell-command (concat "watch " command)))
+
 ;; Bind Open term to C-t
 (global-set-key (kbd "C-t") 'term-other-window)
+
+;; Bind Open term watch command to C-t
+(global-set-key (kbd "M-t") 'term-watch-other-window)
 
 ;; Bind Run Shell Command to C-p
 (global-set-key (kbd "C-p") 'shell-command)
