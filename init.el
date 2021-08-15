@@ -29,7 +29,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(term-run zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(elisp-format duplicate-thing term-run zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -256,22 +256,8 @@
 ;; Find Commits Affecting a File M-x magit-log-buffer-file
 
 ;; Magit Ediff
-
-
 (setq magit-ediff-dwim-show-on-hunks t)
-
 (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
-
-;;
-;; neotree
-;;
-;; (require 'neotree)
-;; (require 'all-the-icons)
-;; (global-set-key (kbd "C-c C-a") 'neotree-toggle)
-;; (setq neo-smart-open t)
-;; (setq neo-theme 'icons)
-;; (setq neo-vc-integration '(face))
-;; (setq neo-window-width 30)
 
 ;;
 ;; treemacs
@@ -309,20 +295,9 @@
 (setq linum-format "%4d \u2502")
 (set-face-background 'fringe nil)
 
-;; ;; Highlight current line
-;; (global-hl-line-mode +1)
-;; (set-face-background 'hl-line "#333333")
-
 ;; Highlight current line number
 (require 'hlinum)
 (hlinum-activate)
-
-;; Delete trailing whitespaces on save
-;; (add-hook 'before-save-hook 'prog-delete-trailing-whitespace)
-
-(defun prog-delete-trailing-whitespace ()
-  (when (derived-mode-p 'prog-mode)
-    (delete-trailing-whitespace)))
 
 ;;
 ;; Dired
