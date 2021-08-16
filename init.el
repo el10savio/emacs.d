@@ -280,7 +280,19 @@
       (push-mark (+ (point) (+ region-length 1))))))
 (setq deactivate-mark nil))
 
-(global-set-key (kbd "C-d") 'duplicate-line)
+(defun duplicate-region-extend-region-to-line-boundaries ()
+  "Given a selection or line, activate a region that extends to the beginning & end of each line in the region."
+  (let
+      ((p1 (region-beginning))
+       (p2 (region-end)))
+    (if mark-active
+        (progn
+          (goto-char p1)
+          (push-mark (line-beginning-position))
+          (goto-char p2)
+          (goto-char (line-end-position)))
+      (push-mark (line-beginning-position))
+      (goto-char (line-end-position)))))
 
 ;;
 ;; Magit
