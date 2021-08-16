@@ -234,7 +234,7 @@
     (global-git-gutter-mode +1))
 
 ;;
-;; Duplicate Line
+;; Duplicate Line/Region
 ;;
 
 (defun duplicate-line()
@@ -246,6 +246,40 @@
   (next-line 1)
   (yank)
 )
+
+(defun duplicate-region-above()
+  "Duplicate the selected region above the cursor."
+  (interactive) (duplicate-region "above"))
+
+(defun duplicate-region-below()
+  "Duplicate the selected region below the cursor."
+  (interactive) (duplicate-region "below"))
+
+(defun duplicate-region(direction)
+  "Perform the region duplication based on the direction given."
+  (duplicate-region-extend-region-to-line-boundaries)
+  (let
+      ((p1 (region-beginning))
+       (p2 (region-end)))
+    (copy-region-as-kill p1 p2)
+    (goto-char (region-end))
+    (newline)
+    (yank)
+    (duplicate-region-highlight-region direction p1 p2)))
+
+(defun duplicate-region-highlight-region (direction p1 p2)
+  "Based on DIRECTION, activate the intended region at original P1 and P2."
+  (let
+      ((region-length (- p2 p1)))
+    (cond
+     ((equal direction "above")
+      (goto-char p1)
+      (push-mark p2))
+     ((equal direction "below")
+      (goto-char (+ p2 1))
+      (push-mark (+ (point) (+ region-length 1))))))
+(setq deactivate-mark nil))
+
 (global-set-key (kbd "C-d") 'duplicate-line)
 
 ;;
