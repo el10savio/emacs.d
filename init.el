@@ -70,10 +70,13 @@
 ;; Bind C-c f to projectile find file
 (global-set-key (kbd "C-c f") #'projectile-find-file)
 
+;; Bind C-/ to comment-or-uncomment-region
+(global-set-key (kbd "C-/") #'comment-or-uncomment-region)
+
 ;; Local search bind to C-c o
 (global-set-key (kbd "C-c o") #'helm-occur)
 
-;; Local replce bind to C-c r
+;; Local replace bind to C-c r
 (global-set-key (kbd "C-c r") #'replace-string)
 
 ;; kill all running processes by default on exit
