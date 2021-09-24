@@ -29,7 +29,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(elisp-format duplicate-thing term-run zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(js-auto-beautify elisp-format duplicate-thing term-run zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -138,8 +138,9 @@
 
 ;; Set default font
 (set-face-attribute 'default nil
-                    :family "Monaco"
-		    :height 180
+;;                    :family "Monaco"
+                    :family "FiraCode"
+		    :height 115
                     :weight 'normal
                     :width 'normal)
 
@@ -249,6 +250,9 @@
   (next-line 1)
   (yank)
 )
+
+;; Bind Duplicate Line to C-d
+(global-set-key (kbd "C-d") 'duplicate-line)
 
 (defun duplicate-region-above()
   "Duplicate the selected region above the cursor."
@@ -614,7 +618,7 @@
     (setq eshell-path-env path-from-shell) ; for eshell users
     (setq exec-path (split-string path-from-shell path-separator))))
 
-(when window-system (set-exec-path-from-shell-PATH))
+;; (when window-system (set-exec-path-from-shell-PATH))
 
 (add-to-list 'exec-path "~/.go/bin")
 (add-to-list 'exec-path "/usr/local/bin/")
@@ -655,4 +659,4 @@
 (require 'lsp-mode)
 
 ;; Either place zls in your PATH or add the following:
-(setq lsp-zig-zls-executable "/Users/evincent/zls")
+(setq lsp-zig-zls-executable "/home/elton/zig/zig-linux-x86_64-0.9.0-dev.897+81e2034d4/")
