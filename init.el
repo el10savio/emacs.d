@@ -660,3 +660,4 @@
 
 ;; Either place zls in your PATH or add the following:
 (setq lsp-zig-zls-executable "/home/elton/zig/zig-linux-x86_64-0.9.0-dev.897+81e2034d4/")
+
