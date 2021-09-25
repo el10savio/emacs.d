@@ -23,13 +23,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "bf387180109d222aee6bb089db48ed38403a1e330c9ec69fe1f52460a8936b66" "5a0eee1070a4fc64268f008a4c7abfda32d912118e080e18c3c865ef864d1bea" "71e5acf6053215f553036482f3340a5445aee364fb2e292c70d9175fb0cc8af7" "2d035eb93f92384d11f18ed00930e5cc9964281915689fa035719cab71766a15" "28a104f642d09d3e5c62ce3464ea2c143b9130167282ea97ddcc3607b381823f" "35c096aa0975d104688a9e59e28860f5af6bb4459fd692ed47557727848e6dfe" "37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" default))
  '(doom-modeline-buffer-encoding nil)
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-   '(js-auto-beautify elisp-format duplicate-thing term-run zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+   '(apropospriate-theme poet-theme nord-theme fira-code-mode js-auto-beautify elisp-format duplicate-thing term-run zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy jedi helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -120,7 +122,7 @@
 ;; overwrite selected text
 (delete-selection-mode t)
 
-(load-theme 'doom-dark+ t)
+(load-theme 'doom-monokai-pro t)
 
 ;;
 ;; Scroll
@@ -138,14 +140,16 @@
 
 ;; Set default font
 (set-face-attribute 'default nil
-;;                    :family "Monaco"
-                    :family "FiraCode"
-		    :height 115
+                    :family "Fira Code Medium"
+;;                    :family "Fantasque Sans Mono"
+;;                    :family "Iosevka Fixed SS08 Medium"
+		    :height 120
                     :weight 'normal
                     :width 'normal)
 
 ;; Default tab size
 (setq default-tab-width 1)
+(setq-default tab-width 2)
 
 ;;
 ;; modeline
@@ -309,8 +313,8 @@
 ;; Find Commits Affecting a File M-x magit-log-buffer-file
 
 ;; Magit Ediff
-(setq magit-ediff-dwim-show-on-hunks t)
-(add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
+;; (setq magit-ediff-dwim-show-on-hunks t)
+;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 
 ;;
 ;; treemacs
@@ -653,7 +657,6 @@
 ;;
 ;; Zig
 ;;
-
 ;; Setup lsp-mode as desired.
 ;; See https://emacs-lsp.github.io/lsp-mode/page/installation/ for more information.
 (require 'lsp-mode)
