@@ -81,6 +81,10 @@
 ;; Local replace bind to C-c r
 (global-set-key (kbd "C-c r") #'replace-string)
 
+;; iedit bind to C-return
+(global-set-key (kbd "<C-return>") #'iedit-mode)
+
+
 ;; kill all running processes by default on exit
 (setq confirm-kill-processes nil)
 
