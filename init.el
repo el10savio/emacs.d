@@ -2,6 +2,10 @@
 ;; Use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Enable Global Clipboard Use
+(setq x-select-enable-clipboard t)
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
 ;; Add MELPA
 (require 'package)
 (add-to-list 'package-archives
