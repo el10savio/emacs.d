@@ -33,7 +33,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-	 '(dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode iedit nord-theme fira-code-mode duplicate-thing term-run zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
+	 '(godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode iedit nord-theme fira-code-mode duplicate-thing term-run zig-mode org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes blacken markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode importmagic 2048-game transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag pyimpsort pyimport ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets py-autopep8 yapfify yasnippet-snippets company-lsp lsp-ui lsp-mode lsp-python-ms magit all-the-icons helm-rg elpy helm-projectile helm golden-ratio flycheck-rust racer company cargo rust-mode))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -44,14 +44,9 @@
  '(git-gutter:deleted ((t (:background "#ff79c6"))))
  '(git-gutter:modified ((t (:background "#f1fa8c")))))
 
-;; enable company mode at start
-;; (add-hook 'after-init-hook 'global-company-mode)
-
-;; company complete on C-c TAB
-;; (global-set-key (kbd "C-c TAB") 'company-complete)
-
-;; Bind C-c return to eval-buffer
-(global-set-key (kbd "C-c RET") 'eval-buffer)
+;;
+;; Keybindings
+;;
 
 ;; quickly open up init.el in new window
 ;;;###autoload
@@ -60,7 +55,11 @@
   (interactive)
   (find-file-other-window user-init-file))
 
+;; Bind C-c i to open init file in new window
 (global-set-key (kbd "C-c i") #'find-user-init-file)
+
+;; Bind C-c return to eval-buffer
+(global-set-key (kbd "C-c RET") 'eval-buffer)
 
 ;; Bind s-> to end-of-buffer
 (global-set-key (kbd "s->") #'end-of-buffer)
@@ -77,6 +76,9 @@
 ;; Bind C-/ to comment-or-uncomment-region
 (global-set-key (kbd "C-/") #'comment-or-uncomment-region)
 
+;; Bind C-c s to Global search 
+(global-set-key (kbd "C-c s") #'rgrep)
+
 ;; Local search bind to C-c o
 (global-set-key (kbd "C-c o") #'helm-occur)
 
@@ -86,16 +88,12 @@
 ;; iedit bind to C-return
 (global-set-key (kbd "<C-return>") #'iedit-mode)
 
-
 ;; kill all running processes by default on exit
 (setq confirm-kill-processes nil)
 
 ;; Set up which-key
 (which-key-mode 1)
 (which-key-setup-side-window-right)
-
-;; Global search bind to C-c s
-(global-set-key (kbd "C-c s") #'rgrep)
 
 ;;
 ;; Display Settings
@@ -133,6 +131,7 @@
 ;;
 ;; Scroll
 ;;
+
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-follow-mouse 't)
@@ -147,9 +146,7 @@
 ;; Set default font
 (set-face-attribute 'default nil
                     :family "Fira Code Medium"
-;;                    :family "Fantasque Sans Mono"
-;;                    :family "Iosevka Fixed SS08 Medium"
-		    :height 120
+										:height 120
                     :weight 'normal
                     :width 'normal)
 
@@ -167,10 +164,7 @@
 (setq-default header-line-format mode-line-format)
 (setq-default mode-line-format nil)
 
-;;(set-face-background 'header-line "#18191f")
-;;(set-face-background 'header-line "#444858")
 (set-face-background 'header-line "#393c49")
-
 
 (blink-cursor-mode 1)
 (setq-default cursor-type 'bar)
@@ -488,129 +482,6 @@
 ;;
 
 ;;
-;; RUST
-;;
-
-;; rustfmt on save
-(setq rust-format-on-save t)
-
-;; rustfmt on C-c C-s
-(add-hook 'rust-mode-hook
-          (lambda () (local-set-key (kbd "C-c C-s") #'rust-format-buffer)))
-
-;; enable cargo
-(add-hook 'rust-mode-hook 'cargo-minor-mode)
-
-;; enable racer
-(setq racer-cmd "/Users/evincent/.cargo/bin/racer")
-(setq racer-rust-src-path "/Users/evincent/Code/rust/rust/src")
-
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode)
-
-;; enable flycheck
-(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-
-;; Take user input in cargo run
-(with-eval-after-load 'rust-mode
-  (define-key rust-mode-map (kbd "C-r") 'my-cargo-run))
-(defun my-cargo-run ()
-  "Build and run Rust code."
-  (interactive)
-  (cargo-process-run)
-  (let (
-      (orig-win (selected-window))
-      (run-win (display-buffer (get-buffer "*Cargo Run*") nil 'visible))
-    )
-    (select-window run-win)
-    (comint-mode)
-    (read-only-mode 0)
-    (select-window orig-win)
-  )
- )
-
-;; Take user input in cargo clippy
-(with-eval-after-load 'rust-mode
-  (define-key rust-mode-map (kbd "C-c C-l") 'my-cargo-clippy))
-(defun my-cargo-clippy ()
-  "Run Clippy on Rust code."
-  (interactive)
-  (cargo-process-clippy)
-  (let (
-      (orig-win (selected-window))
-      (run-win (display-buffer (get-buffer "*Cargo Clippy*") nil 'visible))
-    )
-    (select-window run-win)
-    (comint-mode)
-    (read-only-mode 0)
-    (select-window orig-win)
-  )
- )
-
-
-;;
-;; Python
-;;
-
-(use-package flycheck
-  :init
-  (add-hook 'prog-mode-hook 'flycheck-mode)    ;;  global-flycheck-mode
-  (setq flycheck-display-errors-delay .3))
-
-(use-package company
-  :init (add-hook 'python-mode-hook 'company-mode)
-  :config (setq company-tooltip-align-annotations t) ;; aligns annotation to the right hand side
-          (setq company-minimum-prefix-length 1))
-
-(use-package lsp-mode
-  :ensure t
-  :config
-  (add-hook 'python-mode-hook 'lsp)
-  (setq lsp-file-watch-threshold 10000))
-
-(use-package lsp-ui
-  :ensure t)
-
-(use-package company-lsp
-  :ensure t)
-
-(use-package blacken
-  :ensure t
-  :hook ((python-mode . blacken-mode))
-  :config
-  (setq blacken-line-length 80)
-  (setq blacken-skip-string-normalization t))
-
-(defun py-save-commands ()
-  "Linter on Save for Python"
-  (interactive)
-  (yapfify-buffer)
-  (pyimpsort-buffer))
-
-;; Enable python yasnippets
-;; (add-hook 'python-mode-hook 'yas-minor-mode)
-;; (add-hook 'python-mode-hook 'company-yas)
-
-;; M-Ret to go to definition
-(add-hook 'python-mode-hook
-          (lambda () (local-set-key (kbd "M-RET") #'lsp-find-definition)))
-
-;; yapf and pyimport on C-c C-s
-(add-hook 'python-mode-hook
-          (lambda () (interactive) (local-set-key (kbd "C-c C-s") 'py-save-commands)))
-
-;; flake8 checks
-;; (setq flycheck-python-flake8-executable "flake8")
-;; (flycheck-select-checker 'python-flake8)
-;; (flycheck-mode t)
-
-;; Hs Minor mode
-(use-package hideshow
-  :init
-  (add-hook 'prog-mode-hook 'hs-minor-mode))
-
-;;
 ;; Bash
 ;;
 (use-package lsp-mode
@@ -654,7 +525,7 @@
   (company-mode)))
 
 
-;;(add-hook 'go-mode-hook 'auto-complete-for-go)
+;; (add-hook 'go-mode-hook 'auto-complete-for-go)
 
 ;; Just to make sure go tools are enabled
 (add-to-list 'exec-path "~/go/bin")
@@ -662,14 +533,4 @@
 ;; Automatically format code on save
 (setq gofmt-command "goimports")
 (add-hook 'before-save-hook 'gofmt-before-save)
-
-;;
-;; Zig
-;;
-;; Setup lsp-mode as desired.
-;; See https://emacs-lsp.github.io/lsp-mode/page/installation/ for more information.
-(require 'lsp-mode)
-
-;; Either place zls in your PATH or add the following:
-(setq lsp-zig-zls-executable "/home/elton/zig/zig-linux-x86_64-0.9.0-dev.897+81e2034d4/")
 
