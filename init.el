@@ -316,8 +316,8 @@
 (add-to-list 'auto-mode-alist '("\\.gitignore\\'" . gitignore-mode))
 
 ;; Magit Ediff
-;; (setq magit-ediff-dwim-show-on-hunks t)
-;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
+(setq magit-ediff-dwim-show-on-hunks t)
+(add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 
 ;;
 ;; treemacs
