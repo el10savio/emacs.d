@@ -33,7 +33,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-	 '(cheat-sh hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode iedit nord-theme fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm golden-ratio company))
+	 '(engine-mode cheat-sh hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode nord-theme fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm golden-ratio company))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -84,9 +84,6 @@
 
 ;; Local replace bind to C-c r
 (global-set-key (kbd "C-c r") #'replace-string)
-
-;; iedit bind to C-return
-(global-set-key (kbd "<C-return>") #'iedit-mode)
 
 ;; kill all running processes by default on exit
 (setq confirm-kill-processes nil)
@@ -476,6 +473,26 @@
 ;; Autocomplete org mode
 (require 'org-ac)
 (org-ac/config-default)
+
+;;
+;; Engine Mode
+;;
+
+;; Enable engine mode
+(require 'engine-mode)
+(engine-mode t)
+
+;; Set firefox as browser
+(setq engine/browser-function 'browse-url-firefox)
+
+;; Define Google Search 
+(defengine google
+  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+  :keybinding "g")
+
+;; Bind C-= to engine mode google search
+(global-set-key (kbd "C-=") #'engine/search-google)
+
 
 ;;
 ;; Code
