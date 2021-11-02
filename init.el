@@ -486,13 +486,13 @@
 ;; Set firefox as browser
 (setq engine/browser-function 'browse-url-firefox)
 
-;; Define Google Search 
-(defengine google
-  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
-  :keybinding "g")
+;; Define duckduckgo Search 
+(defengine duckduckgo
+  "https://duckduckgo.com/?q=%s"
+  :keybinding "d")
 
-;; Bind C-= to engine mode google search
-(global-set-key (kbd "C-=") #'engine/search-google)
+;; Bind C-= to engine mode duckduckgo search
+(global-set-key (kbd "C-=") #'engine/search-duckduckgo)
 
 
 ;;
