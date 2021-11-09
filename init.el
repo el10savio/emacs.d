@@ -411,6 +411,8 @@
 ;; Bind Run Shell Command to C-p
 (global-set-key (kbd "C-p") 'shell-command)
 
+;; Change term to buffer to copy text
+;; M-x term-line-mode (C-c C-j)
 
 ;;
 ;; YAML Mode
