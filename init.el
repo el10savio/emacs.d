@@ -4,7 +4,7 @@
 
 ;; Enable Global Clipboard Use
 (setq x-select-enable-clipboard t)
-(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+(setq interprogram-paste-function 'x-selection-value)
 
 ;; Add MELPA
 (require 'package)
@@ -124,7 +124,8 @@
 ;; overwrite selected text
 (delete-selection-mode t)
 
-(load-theme 'doom-monokai-pro t)
+;; (load-theme 'doom-vibrant t)
+(load-theme 'doom-dark+ t)
 
 ;;
 ;; Scroll
@@ -197,26 +198,26 @@
 (setq dashboard-set-navigator t)
 
 ;; Format: "(icon title help action face prefix suffix)"
-(setq dashboard-navigator-buttons
-      `(;; line1
-        ((,(all-the-icons-faicon "server" :height 1.1 :v-adjust 0.0)
-         "GoDCApp"
-         "Open GoDCApp Repo"
-         (lambda (&rest _) (find-file "/Users/evincent/EN/efa-branch/GoDCApp")))
-         (,(all-the-icons-faicon "wifi" :height 1.1 :v-adjust 0.0)
-         "networking-extreme"
-         "Open OS Plugin Repo"
-         (lambda (&rest _) (find-file "/Users/evincent/EN/efa-branch/networking-extreme")))
-         (,(all-the-icons-faicon "check-circle" :height 1.1 :v-adjust 0.0)
-         "todo.org"
-         "Open todo.org"
-         (lambda (&rest _) (find-file "/Users/evincent/todo.org")))
-         (,(all-the-icons-faicon "desktop" :height 1.1 :v-adjust 0.0)
-         "emacs.d"
-         "Open Emacs Config"
-         (lambda (&rest _) (find-file "/home/elton/.emacs.d")))
-         )))
-
+;; (setq dashboard-navigator-buttons
+;;       `(;; line1
+;;         ((,(all-the-icons-faicon "server" :height 1.1 :v-adjust 0.0)
+;;          "GoDCApp"
+;;          "Open GoDCApp Repo"
+;;          (lambda (&rest _) (find-file "/Users/evincent/EN/efa-branch/GoDCApp")))
+;;          (,(all-the-icons-faicon "wifi" :height 1.1 :v-adjust 0.0)
+;;          "networking-extreme"
+;;          "Open OS Plugin Repo"
+;;          (lambda (&rest _) (find-file "/Users/evincent/EN/efa-branch/networking-extreme")))
+;;          (,(all-the-icons-faicon "check-circle" :height 1.1 :v-adjust 0.0)
+;;          "todo.org"
+;;          "Open todo.org"
+;;          (lambda (&rest _) (find-file "/Users/evincent/todo.org")))
+;;          (,(all-the-icons-faicon "desktop" :height 1.1 :v-adjust 0.0)
+;;          "emacs.d"
+;;          "Open Emacs Config"
+;;          (lambda (&rest _) (find-file "/home/elton/.emacs.d")))
+;;          )))
+;; 
 
 ;; Enable rainbow delimiters
 (require 'rainbow-delimiters)
@@ -314,37 +315,38 @@
 (add-to-list 'auto-mode-alist '("\\.gitignore\\'" . gitignore-mode))
 
 ;; Magit Ediff
-(setq magit-ediff-dwim-show-on-hunks t)
-(add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
+;; (setq magit-ediff-dwim-show-on-hunks t)
+;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 
 ;;
 ;; treemacs
 ;;
-(use-package treemacs
-	:ensure t
-	:bind
-	(:map global-map
-	      ("C-c t" . treemacs)
-	      ("C-c /" . treemacs-visit-node-vertical-split)
-	      ("C-c -" . treemacs-visit-node-horizontal-split)
-	      )
-	:config
-	(progn
-	  (setq treemacs-is-never-other-window t
-		treemacs-follow-after-init t
-		treemacs-recenter-after-file-follow t
-		treemacs-width 25
-		treemacs-indentation 2
-		treemacs-indentation-string " "
-  		treemacs-collapse-dirs (if (executable-find "python") 3 0)
-		treemacs-silent-refresh t
-		treemacs-silent-filewatch t
-		treemacs-sorting 'alphabetic-asc
-		treemacs-indentation 1
-		)))
-
-(treemacs-resize-icons 15)
-(setq treemacs-follow-mode t)
+;; (use-package treemacs
+;; 	:ensure t
+;; 	:bind
+;; 	(:map global-map
+;; 	      ("C-c t" . treemacs)
+;; 	      ("C-c /" . treemacs-visit-node-vertical-split)
+;; 	      ("C-c -" . treemacs-visit-node-horizontal-split)
+;; 	      )
+;; 	:config
+;; 	(progn
+;; 	  (setq treemacs-is-never-other-window t
+;; 		treemacs-follow-after-init t
+;; 		treemacs-recenter-after-file-follow t
+;; 		treemacs-width 25
+;; 		treemacs-indentation 2
+;; 		treemacs-indentation-string " "
+;;   		treemacs-collapse-dirs (if (executable-find "python") 3 0)
+;; 		treemacs-silent-refresh t
+;; 		treemacs-silent-filewatch t
+;; 		treemacs-sorting 'alphabetic-asc
+;; 		treemacs-indentation 1
+;; 		)))
+;; 
+;; (treemacs-resize-icons 15)
+;; (setq treemacs-follow-mode t)
+;;
 
 ;;
 ;; Linum
@@ -449,7 +451,7 @@
 (require 'bm)
 
 (global-set-key (kbd "C-c b") 'bm-toggle)
-(global-set-key (kbd "C-c ]")   'bm-next)
+(global-set-key (kbd "C-c ]") 'bm-next)
 (global-set-key (kbd "C-c [") 'bm-previous)
 
 ;;
@@ -486,7 +488,7 @@
 (engine-mode t)
 
 ;; Set firefox as browser
-(setq engine/browser-function 'browse-url-firefox)
+;; (setq engine/browser-function 'browse-url-firefox)
 
 ;; Define duckduckgo Search 
 (defengine duckduckgo
@@ -513,44 +515,17 @@
 ;; Go
 ;;
 
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell (replace-regexp-in-string
-                          "[ \t\n]*$"
-                          ""
-                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
-    (setenv "PATH" path-from-shell)
-    (setq eshell-path-env path-from-shell) ; for eshell users
-    (setq exec-path (split-string path-from-shell path-separator))))
+(setq exec-path (append exec-path '("/Users/temporaryadmin/go/bin")))
 
-;; (when window-system (set-exec-path-from-shell-PATH))
+(setq company-idle-delay t)
 
-(add-to-list 'exec-path "~/.go/bin")
-(add-to-list 'exec-path "/usr/local/bin/")
-
-;; Init the auto complete modules
-(require 'go-autocomplete)
-
-(defun auto-complete-for-go ()
-  (auto-complete-mode 1)
-  (yas-minor-mode-on))
-
-(require 'smartparens-config)
-
-(add-hook 'go-mode-hook 'lsp-deferred)
-(add-hook 'go-mode-hook 'company-mode)
-(add-hook 'go-mode-hook 'yas-minor-mode)
-(add-hook 'go-mode-hook #'smartparens-mode)
-(add-hook 'go-mode-hook (lambda ()
-  (set (make-local-variable 'company-backends) '(company-go))
-  (company-mode)))
-
-
-;; (add-hook 'go-mode-hook 'auto-complete-for-go)
-
-;; Just to make sure go tools are enabled
-(add-to-list 'exec-path "~/go/bin")
-
-;; Automatically format code on save
 (setq gofmt-command "goimports")
 (add-hook 'before-save-hook 'gofmt-before-save)
 
+(defun my-go-mode-hook ()
+  (local-set-key (kbd "M-.") 'godef-jump))
+  (set (make-local-variable 'company-backends) '(company-go))
+
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+(add-hook 'go-mode-hook 'go-eldoc-setup)
+(add-hook 'go-mode-hook 'company-mode)
