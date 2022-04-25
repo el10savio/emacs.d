@@ -34,7 +34,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-	 '(speed-type engine-mode cheat-sh hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode nord-theme fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm golden-ratio company))
+	 '(erlang xcscope origami flycheck-inline speed-type engine-mode cheat-sh hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode nord-theme fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list peep-dired magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm golden-ratio company))
  '(recentf-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -78,7 +78,7 @@
 (global-set-key (kbd "C-/") #'comment-or-uncomment-region)
 
 ;; Bind C-c s to Global search 
-(global-set-key (kbd "C-c s") #'rgrep)
+;; (global-set-key (kbd "C-c s") #'rgrep)
 
 ;; Local search bind to C-c o
 (global-set-key (kbd "C-c o") #'helm-occur)
@@ -526,6 +526,13 @@
   (local-set-key (kbd "M-.") 'godef-jump))
   (set (make-local-variable 'company-backends) '(company-go))
 
+(require 'cl)
+
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 (add-hook 'go-mode-hook 'company-mode)
+(add-hook 'go-mode-hook 'yas-global-mode)
+(add-hook 'go-mode-hook 'flycheck-mode)
+
+(with-eval-after-load 'flycheck
+  (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
