@@ -503,9 +503,15 @@
   "https://duckduckgo.com/?q=%s"
   :keybinding "d")
 
-;; Bind C-= to engine mode duckduckgo search
-(global-set-key (kbd "C-=") #'engine/search-duckduckgo)
+;; Bind C-c = to engine mode duckduckgo search
+(global-set-key (kbd "C-c =") #'engine/search-duckduckgo)
 
+;; Set browser
+(setq browse-url-browser-function 'browse-url-chrome)
+(setq browse-url-chrome-program "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+
+;; Bind M-= to browse-url
+(global-set-key (kbd "M-=") #'browse-url)
 
 ;;
 ;; Code
@@ -544,3 +550,4 @@
 
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
+(put 'upcase-region 'disabled nil)
