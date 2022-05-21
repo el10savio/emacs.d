@@ -34,7 +34,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-	 '(rustic evil-tutor evil xclip xcscope origami flycheck-inline speed-type engine-mode cheat-sh hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode nord-theme fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm company))
+	 '(wgrep fzf rustic evil-tutor evil xclip xcscope origami flycheck-inline speed-type engine-mode cheat-sh hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode nord-theme fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm company))
  '(recentf-mode t)
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
@@ -72,8 +72,8 @@
 ;; Bind C-c p to package install
 (global-set-key (kbd "C-c p") #'package-install)
 
-;; Bind C-c f to projectile find file
-(global-set-key (kbd "C-c f") #'projectile-find-file)
+;; Bind C-c f to fzf find file
+(global-set-key (kbd "C-c f") #'fzf-find-file)
 
 ;; Bind C-/ to comment-or-uncomment-region
 (global-set-key (kbd "C-/") #'comment-or-uncomment-region)
