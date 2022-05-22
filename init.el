@@ -16,11 +16,10 @@
 (xclip-mode 1)
 
 ;; Add MELPA
-(require 'use-package)
 (require 'package)
-(add-to-list 'package-archives
-						 '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+(require 'use-package)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -30,11 +29,10 @@
  '(doom-modeline-buffer-encoding nil)
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
- '(engine-mode t)
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-	 '(wgrep fzf rustic evil-tutor evil xclip xcscope origami flycheck-inline speed-type engine-mode cheat-sh hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode nord-theme fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list magit-delta shell-pop vimish-fold rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl treemacs which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm company))
+	 '(nlinum wgrep fzf rustic xclip origami flycheck-inline engine-mode hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list magit-delta shell-pop rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm company))
  '(recentf-mode t)
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
@@ -287,20 +285,12 @@
 ;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 
 ;;
-;; Linum
+;; nLinum
 ;;
 
-(add-hook 'prog-mode-hook 'linum-mode)
-(setq linum-format "%4d \u2502")
+(add-hook 'prog-mode-hook 'nlinum-mode)
+(setq nlinum-format "%4d \u2502")
 (set-face-background 'fringe nil)
-
-;; Highlight current line number
-(use-package hlinum
-	:defer t
-	:init
-	(hlinum-activate)
-)
-
 
 ;;
 ;; Dired
