@@ -456,11 +456,22 @@
 ;;
 ;; Bash
 ;;
+
 (use-package lsp-mode
 	:defer t
 	:commands lsp
 	:hook
 	(sh-mode . lsp))
+
+;;
+;; Rust
+;;
+
+(use-package rustic
+	:defer t
+	:init
+	(setq rust-format-on-save t)
+)
 
 ;;
 ;; Go
