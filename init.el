@@ -357,7 +357,6 @@
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
-
 ;;
 ;; Evil Mode
 ;;
@@ -384,7 +383,6 @@
 (setq  helm-rg-ripgrep-executable "/usr/local/bin/rg")
 (setq helm-rg-default-directory 'git-root)
 
-
 ;;
 ;; bm
 ;;
@@ -396,7 +394,6 @@
 	(global-set-key (kbd "C-c ]") 'bm-next)
 	(global-set-key (kbd "C-c [") 'bm-previous)
 )
-
 
 ;;
 ;; Avy
@@ -451,7 +448,6 @@
 	(global-set-key (kbd "M-=") #'browse-url)
 )
 
-
 ;;
 ;; Code
 ;;
@@ -502,7 +498,6 @@
 (with-eval-after-load 'flycheck
 	(add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
 (put 'upcase-region 'disabled nil)
-
 
 ;;
 ;; Startup profiling
