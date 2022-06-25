@@ -32,7 +32,7 @@
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
  '(package-selected-packages
-	 '(nlinum wgrep fzf rustic xclip origami flycheck-inline engine-mode hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list magit-delta shell-pop rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm company))
+	 '(selectric-mode nlinum wgrep fzf rustic xclip origami flycheck-inline engine-mode hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list magit-delta shell-pop rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm company))
  '(recentf-mode t)
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
@@ -57,6 +57,9 @@
 
 ;; Bind C-c i to open init file in new window
 (global-set-key (kbd "C-c i") #'find-user-init-file)
+
+;; Bind C-k to kill whole line
+(global-set-key (kbd "C-k") #'kill-whole-line)
 
 ;; Bind C-c return to eval-buffer
 (global-set-key (kbd "C-c RET") 'eval-buffer)
