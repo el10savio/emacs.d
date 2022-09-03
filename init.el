@@ -492,7 +492,7 @@
 ;; Go
 ;;
 
-(setq exec-path (append exec-path '("/Users/temporaryadmin/go/bin")))
+(setq exec-path (append exec-path '("/Users/e.savio/go/bin")))
 
 (setq company-idle-delay t)
 
