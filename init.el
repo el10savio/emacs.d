@@ -10,6 +10,9 @@
 ;; Use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Move all backup files to "~/.emacs-trash"
+(setq backup-directory-alist '((".*" . "~/.emacs-trash")))
+
 ;; Enable Global Clipboard Use
 (setq x-select-enable-clipboard t)
 (setq interprogram-paste-function 'x-selection-value)
@@ -39,8 +42,9 @@
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(helm-completion-style 'emacs)
  '(line-number-mode nil)
+ '(org-agenda-files '("~/rust/head.org"))
  '(package-selected-packages
-	 '(selectric-mode nlinum wgrep fzf rustic xclip origami flycheck-inline engine-mode hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list magit-delta shell-pop rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm company))
+	 '(avy-zap avy selectric-mode nlinum wgrep fzf rustic xclip origami flycheck-inline engine-mode hideshow-org godoctor dired-subtree fancy-dabbrev bats-mode insert-shebang lispy dockerfile-mode gitignore-mode peek-mode load-theme-buffer-local gh-md grip-mode fira-code-mode duplicate-thing term-run org-ac smartparens writegood-mode howdoyou howdoi windresize bm yaml-mode ecb go-imenu imenu-list magit-delta shell-pop rg sr-speedbar kaolin-themes markdown-mode markdown-mode+ ace-jump-buffer vc-msg git-lens company-go exec-path-from-shell go-imports autopair go-autocomplete go-complete go-mode transpose-frame mood-line marginalia dired-filter dashboard multiple-cursors helm-ag ag perspective diff-hl which-key git-gutter doom-themes yasnippet-classic-snippets yasnippet-snippets company-lsp lsp-ui lsp-mode magit all-the-icons helm-rg helm-projectile helm company))
  '(recentf-mode t)
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
