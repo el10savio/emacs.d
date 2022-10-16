@@ -18,6 +18,9 @@
 (setq interprogram-paste-function 'x-selection-value)
 (xclip-mode 1)
 
+;; Auto Refresh All The Buffers From Disk 
+(global-auto-revert-mode t)
+
 ;; Add MELPA
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
